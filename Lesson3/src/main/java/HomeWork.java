@@ -1,12 +1,20 @@
+import static java.lang.Integer.MAX_VALUE;
+
 public class HomeWork {
     public static void main(String[] args) {
         //Некоторые тесты для проверки задач.
         System.out.println(sum(100, 200));
-        System.out.println(sum(Integer.MAX_VALUE, Integer.MAX_VALUE));
+        System.out.println(getSum());
         System.out.println(max(56, 349));
         System.out.println(average(new int[]{0, -2, 3, -1, 5}));
         System.out.println(max(new int[]{1, 2, 3, 4, 5, 100, 99}));
         System.out.println(calculateHypotenuse(3, 4));
+    }
+
+    private static int getSum() {
+        if (sum(MAX_VALUE, MAX_VALUE) > MAX_VALUE) {
+        }
+        return -1;
     }
 
     /**
@@ -14,12 +22,9 @@ public class HomeWork {
      * 2. Дополнительно: сделать проверку если сумма a и b больше чем максимальное значение int то вернуть -1
      **/
     public static int sum(int a, int b) {
-        int summa = a + b;
-        if (summa > Integer.MAX_VALUE) {
-            return -1;
-        }
         return a + b;
     }
+
 
     /**
      * Метод должен вернуть максимальное значение из двух чисел
@@ -86,9 +91,8 @@ public class HomeWork {
      * 16
      * return 20
      */
-    public static int calculateHypotenuse(int a, int b) {
-        int calculateHypotenuse = (int) (Math.sqrt(a * a + b * b));
+    public static double calculateHypotenuse(int a, int b) {
+        double calculateHypotenuse = (Math.sqrt(a * a + b * b));
         return calculateHypotenuse;
-        //не получалось вернуть int, поэтому схитрила%)))
     }
 }
