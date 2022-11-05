@@ -52,11 +52,14 @@ public class HomeWork {
      * Метод должен return 3.0
      */
     public static double average(int[] array) {
-        double sumArray = 0;
-        for (int i = 0; i < array.length; i++) {
-            sumArray = sumArray + array[i];
+        double average = 0;
+        if (array.length > 0) {
+            double sumArray = 0;
+            for (int i = 0; i < array.length; i++) {
+                sumArray += array[i];
+            }
+            average = sumArray / array.length;
         }
-        double average = sumArray / array.length;
         return average;
     }
 
@@ -64,7 +67,7 @@ public class HomeWork {
      * Метод должен вернуть максимальый элемент массива. Пример: array = {1,2,10,3} метод возвращает 10
      **/
     public static int max(int[] array) {
-        int max = array[0];
+        int max = Integer.MIN_VALUE;
         for (int i = 0; i < array.length; i++) {
             if (array[i] > max) {
                 max = array[i];
@@ -86,9 +89,8 @@ public class HomeWork {
      * 16
      * return 20
      */
-    public static int calculateHypotenuse(int a, int b) {
-        int calculateHypotenuse = (int) (Math.sqrt(a * a + b * b));
+    public static double calculateHypotenuse(int a, int b) {
+        double calculateHypotenuse = Math.sqrt(a * a + b * b);
         return calculateHypotenuse;
-        //не получалось вернуть int, поэтому схитрила%)))
     }
 }
