@@ -9,7 +9,7 @@ public class Task3 {
         double number = cons.nextDouble();
         double number1 = cons.nextDouble();
         double number2 = cons.nextDouble();
-        double max = Math.max(Math.abs(number), Math.max(Math.abs(number1), Math.abs(number2)));
-        System.out.println(max);
+        double min = Math.min(Math.abs(number), Math.min(Math.abs(number1), Math.abs(number2)));
+        System.out.println(min);
     }
 }
