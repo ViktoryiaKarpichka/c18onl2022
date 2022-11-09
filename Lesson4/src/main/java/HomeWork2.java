@@ -65,7 +65,7 @@ public class HomeWork2 {
     public static int calculateCountOfOddElementsInMatrix(int[] ints) {
         int count = Integer.MIN_VALUE;
         for (int i = 0; i < ints.length; i++) {
-            if (ints[i] % 2 - 1 == 0) {
+            if (ints[i] % 2 != 0) {
                 count = ints[i];
             }
         }
@@ -82,7 +82,7 @@ public class HomeWork2 {
      * @param count - количество программистов
      **/
     public static void countDevs(int count) {
-        if (count == 1 && count % 100 == 1 && count != 11) {
+        if (count == 1 || count % 100 == 1 || count != 11 || count % 10 == 1) {
             System.out.println(count + " программист");
         } else if (count == 2 || count == 3 || count == 4) {
             System.out.println(count + " программиста");// тут пишем логику
@@ -117,14 +117,14 @@ public class HomeWork2 {
      */
     public static void printPrimeNumbers() {
         for (int i = 2; i < 1000; i++) {// тут пишем логику
-            boolean primeNumb = true;
+            boolean primeNumber = true;
             for (int a = 2; a < i; a++) {
                 if (i % a == 0) {
-                    primeNumb = false;
+                    primeNumber = false;
                     break;
                 }
             }
-            if (primeNumb) {
+            if (primeNumber) {
                 System.out.println(i);
             }
         }
