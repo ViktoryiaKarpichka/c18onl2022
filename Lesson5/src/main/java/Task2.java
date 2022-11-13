@@ -2,8 +2,8 @@
 //         сколько амеб будет через 3, 6, 9, 12,..., 24 часа
 public class Task2 {
     public static void main(String[] args) {
-        int numberOfAmoebas = 1;
-        for (int i = 1; i < 8; i++) {
+        int numberOfAmoebas;
+        for (int i = 1; i <= 8; i++) {
             numberOfAmoebas = (int) Math.pow(2, i);
             System.out.println(numberOfAmoebas);
         }

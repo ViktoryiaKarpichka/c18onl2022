@@ -7,7 +7,7 @@ import java.util.Random;
 public class Task1 {
     public static void main(String[] args) {
         Random number = new Random();
-        switch (number.nextInt(8)) {
+        switch (number.nextInt(8) + 1) {
             case 1 -> System.out.println("Понедельник");
             case 2 -> System.out.println("Вторник");
             case 3 -> System.out.println("Среда");

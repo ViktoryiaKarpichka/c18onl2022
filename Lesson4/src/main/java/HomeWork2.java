@@ -82,7 +82,7 @@ public class HomeWork2 {
      * @param count - количество программистов
      **/
     public static void countDevs(int count) {
-        if (count == 1 || count % 100 == 1 || count != 11 || count % 10 == 1) {
+        if (count % 100 != 11 && count % 10 == 1) {
             System.out.println(count + " программист");
         } else if (count == 2 || count == 3 || count == 4) {
             System.out.println(count + " программиста");// тут пишем логику
