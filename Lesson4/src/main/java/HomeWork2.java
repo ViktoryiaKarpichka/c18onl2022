@@ -9,7 +9,7 @@ public class HomeWork2 {
         System.out.println(operation(0));
         System.out.println(calculateCountOfOddElementsInMatrix(new int[]{1, 2, 3, 4, 5, 6}));
         countDevs(103);
-        countDevs(11);
+        countDevs(12);
         foobar(6);
         foobar(10);
         foobar(15);
