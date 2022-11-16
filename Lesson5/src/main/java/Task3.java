@@ -4,19 +4,18 @@
 //        "5 - это положительное число, количество цифр = 1"
 public class Task3 {
     public static void main(String[] args) {
-        definitionOfNamber();
+        definitionOfNumber(5);
     }
 
-    private static void definitionOfNamber() {
-        int a = 0;
-        if (a > 0) {
-            System.out.printf("%d - это положительное число, количество цифр = %s%n", a, (int) (Math.log10(a) + 1));
-        } else if (a < 0) {
-            System.out.printf("%d - это отрицательное число, количество цифр = %s%n", a, (int) (Math.log10(-a) + 1));
+    private static void definitionOfNumber(int i) {
+        if (i > 0) {
+            System.out.printf("%d - это положительное число, количество цифр = %s%n", i, (int) (Math.log10(i) + 1));
+        } else if (0 > i) {
+            System.out.printf("%d - это отрицательное число, количество цифр = %s%n", i, (int) (Math.log10(-i) + 1));
         } else {
             System.out.println("Число 0 состоит из 1 цифры и не является ни положительным, ни отрицательным");
         }
-        return;
     }
-
 }
+
+

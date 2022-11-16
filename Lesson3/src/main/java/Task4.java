@@ -3,7 +3,7 @@ import java.util.Random;
 public class Task4 {
     public static void main(String[] args) {
         Random random = new Random();
-        int sec = random.nextInt(28800);
+        int sec = random.nextInt(28801);
         int hour = sec / 3600;
         if (hour < 1) {
             System.out.println("До конца рабочего осталось меньше часа");
