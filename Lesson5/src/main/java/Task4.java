@@ -12,18 +12,11 @@
 //Водолей (21 января — 19 февраля)
 //Рыбы (20 февраля — 20 марта
 public class Task4 {
-    private static boolean checkDay(int day, int from, int to) {
-        return day >= from && day <= to;
-    }
-
     public static void main(String[] args) {
         int month = 4;
         int day = 8;
         getZodiacName(month, day);
-
-
     }
-
     private static void getZodiacName(int month, int day) {
         if (month == 1 && checkDay(day, 21, 31) || month == 2 && checkDay(day, 1, 19)) {
             System.out.println("Водолей");
@@ -50,5 +43,9 @@ public class Task4 {
         } else if (month == 12 && checkDay(day, 23, 31) || month == 1 && checkDay(day, 1, 20)) {
             System.out.println("Козерог");
         }
+    }
+
+    private static boolean checkDay(int day, int from, int to) {
+        return day >= from && day <= to;
     }
 }
