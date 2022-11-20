@@ -10,10 +10,8 @@ public class Main {
         user1.gender = "male";
         user1.setAge(30);
         System.out.println(user1);
-        User user2 = new User();
+        User user2 = new User("Petr", "Petrov");
         System.out.println(user2);
+
     }
-
-
-
 }
