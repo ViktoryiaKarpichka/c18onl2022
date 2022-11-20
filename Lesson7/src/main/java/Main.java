@@ -12,6 +12,5 @@ public class Main {
         System.out.println(user1);
         User user2 = new User("Petr", "Petrov");
         System.out.println(user2);
-
     }
 }
