@@ -4,25 +4,22 @@ public class User {
     public String surname;
     public String gender;
 
-    public void setNameSurname(String name, String surname) {
+
+    public void setNameSurname() {
         this.name = name;
         this.surname = surname;
+        System.out.println(name + " " + surname);
     }
 
     public void setAge(int age) {
         this.age = age;
+        age++;
+        System.out.println(age);
     }
 
     public void setGender(String gender) {
         this.gender = gender;
     }
-
-    public int evaluateAge(int age) {
-        ;
-        int evaluateAge = age++;
-        return evaluateAge;
-    }
-
     @Override
     public String toString() {
         return "User{" +
@@ -38,5 +35,10 @@ public class User {
         this.name = name;
         this.surname = surname;
         this.gender = gender;
+    }
+
+    public User(String name, String surname) {
+        this.name = name;
+        this.surname = surname;
     }
 }
