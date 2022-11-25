@@ -4,24 +4,38 @@ public class User {
     public String surname;
     public String gender;
 
-    public void setNameSurname(String name, String surname) {
+    public User() {
+    }
+
+    public User(int age, String name, String surname, String gender) {
+        this.age = age;
+        this.name = name;
+        this.surname = surname;
+        this.gender = gender;
+    }
+    public User(String name, String surname) {
         this.name = name;
         this.surname = surname;
     }
+    public User(String gender) {
 
+        this.gender = gender;
+    }
+    public void setNameSurname() {
+        this.name = name;
+        this.surname = surname;
+        System.out.println(name + " " + surname);
+    }
+    @Deprecated
     public void setAge(int age) {
         this.age = age;
+        age++;
+        System.out.println(age);
     }
-
     public void setGender(String gender) {
         this.gender = gender;
     }
 
-    public int evaluateAge(int age) {
-        ;
-        int evaluateAge = age++;
-        return evaluateAge;
-    }
 
     @Override
     public String toString() {
@@ -31,12 +45,5 @@ public class User {
                 ", surname='" + surname + '\'' +
                 ", sex='" + gender + '\'' +
                 '}';
-    }
-
-    public User(int age, String name, String surname, String gender) {
-        this.age = age;
-        this.name = name;
-        this.surname = surname;
-        this.gender = gender;
     }
 }
