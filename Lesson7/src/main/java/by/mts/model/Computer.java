@@ -10,14 +10,12 @@ public class Computer {
     private int resourceOfFullCycles;
     private boolean isBurned;
     Random random = new Random(2);
-
     public Computer(String centralProcessingUnit, String randomAccessMemory, String hardDiskDrive, int resourceOfFullCycles) {
         this.centralProcessingUnit = centralProcessingUnit;
         this.randomAccessMemory = randomAccessMemory;
         this.hardDiskDrive = hardDiskDrive;
         this.resourceOfFullCycles = resourceOfFullCycles;
     }
-
     public void outPut(String centralProcessingUnit, String randomAccessMemory, String hardDiskDrive, int resourceOfFullCycles) {
         this.centralProcessingUnit = centralProcessingUnit;
         this.randomAccessMemory = randomAccessMemory;
@@ -25,7 +23,6 @@ public class Computer {
         this.resourceOfFullCycles = resourceOfFullCycles;
         System.out.println(centralProcessingUnit + " " + randomAccessMemory + " " + hardDiskDrive + " " + resourceOfFullCycles);
     }
-
     public void on() {
         if (!isBurned && resourceOfFullCycles > 0) {
             System.out.println("Turning on the computer");
@@ -38,7 +35,6 @@ public class Computer {
             burnOut();
         }
     }
-
     public void off() {
         if (!isBurned && resourceOfFullCycles > 0) {
             System.out.println("Shutting down the computer");
