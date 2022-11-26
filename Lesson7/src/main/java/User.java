@@ -13,29 +13,30 @@ public class User {
         this.surname = surname;
         this.gender = gender;
     }
-    public User(String name, String surname) {
-        this.name = name;
-        this.surname = surname;
-    }
-    public User(String gender) {
 
-        this.gender = gender;
-    }
-    public void setNameSurname() {
+    private User(String name, String surname) {
         this.name = name;
         this.surname = surname;
+    }
+
+    public User(String gender) {
+        this("Anna", "Petrova");
+        this.gender = gender; // когда удаляю эту строку, то пол генерится null. Почему так? В скобку выше не записывает-ошибка
+    }
+
+    public void printNameSurname() {
         System.out.println(name + " " + surname);
     }
+
     @Deprecated
-    public void setAge(int age) {
-        this.age = age;
-        age++;
+    public void evaluateAge(int age) {
+        this.age = ++age;
         System.out.println(age);
     }
+
     public void setGender(String gender) {
         this.gender = gender;
     }
-
 
     @Override
     public String toString() {
