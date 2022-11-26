@@ -1,7 +1,5 @@
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
-import static java.lang.System.setIn;
 /**
  * Шаги по реализации:
  * - Прочитать два int из консоли
@@ -39,14 +37,20 @@ public class Task14 {
                         }
                 }
                 Random random = new Random();
-                int[][] massive = new int[length][weight];
+                char[][] massive = new char[length][weight];
                 for (int i = 0; i < massive.length; i++) {
-                        for (int j = 0; j < massive[i].length; j++) {
-                                massive[i][j] = random.nextInt(101);
-                                System.out.printf("%2d ",massive[i][j]);
+                        for (int j = 0; j < massive.length; j++) {
+                                massive[i][j] = (char) random.nextInt(100);
+                                if (massive[i][j] % 3 == 0) {
+                                        massive[i][j] = '+';
+                                } else if (massive[i][j] % 7 == 0) {
+                                        massive[i][j] = '-';
+                                } else {
+                                        massive[i][j] = '*';
+                                }
+                                System.out.print(massive[i][j] + " ");
                         }
                         System.out.println();
                 }
-
         }
 }
