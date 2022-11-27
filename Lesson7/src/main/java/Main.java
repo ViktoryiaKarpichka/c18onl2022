@@ -10,9 +10,11 @@ public class Main {
         user1.gender = "male";
         user1.evaluateAge(30);
         System.out.println(user1);
-        //      User user2 = new User("Petr", "Petrov");
-        //     System.out.println(user2);
-        User user3 = new User("female");
-        System.out.println(user3);
+        // User user2 = new User("Petr", "Petrov");
+        //System.out.println(user2);
+        User anna = new User("женский");
+        System.out.println(anna.getName());
+        System.out.println(anna.getSurname());
+        System.out.println(anna);
     }
 }
