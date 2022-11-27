@@ -21,7 +21,7 @@ public class User {
 
     public User(String gender) {
         this("Anna", "Petrova");
-        this.gender = gender; // когда удаляю эту строку, то пол генерится null. Почему так? В скобку выше не записывает-ошибка
+        this.gender = gender;
     }
 
     public void printNameSurname() {
@@ -34,8 +34,28 @@ public class User {
         System.out.println(age);
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getGender() {
+        return gender;
     }
 
     @Override
