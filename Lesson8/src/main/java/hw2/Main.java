@@ -7,6 +7,6 @@ public class Main {
         car.stopCar();
         car.getDistance();
         car.calculateFuelResidue();
-        car.refueling(20);
+        car.refueling(25);
     }
 }
