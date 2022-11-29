@@ -8,7 +8,7 @@ import lombok.ToString;
 @Setter
 @Getter
 public class Car {
-    private Engine engine;
+    private final Engine engine;
     private GasTank gasTank;
     private String model;
     private int yearCar;
