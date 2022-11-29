@@ -8,7 +8,7 @@ import lombok.ToString;
 @Setter
 @Getter
 public class Car {
-    private Engine engine;
+    private final Engine engine;
     private GasTank gasTank;
     private String model;
     private int yearCar;
@@ -58,5 +58,13 @@ public class Car {
 
     public void goCar() {
         System.out.println("The car went");
+    }
+
+    public void refueling(int liters) {
+        if (gasTank.getFuelResidue() + liters > gasTank.getFuelTank()) {
+            System.out.println("The tank is full");
+        } else {
+            gasTank.setFuelResidue(gasTank.getFuelResidue() + liters);
+        }
     }
 }

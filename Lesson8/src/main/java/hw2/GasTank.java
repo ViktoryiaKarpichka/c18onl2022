@@ -15,8 +15,4 @@ public class GasTank {
     public GasTank(int fuelTank) {
         this.fuelTank = fuelTank;
     }
-
-    public int getFuelTank() {
-        return fuelTank;
-    }
 }
