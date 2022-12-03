@@ -23,13 +23,13 @@ public class MilitaryOffice {
 
     public Person[] checkNameRecruits(String name) {
         Person[] persons = personRegistry.getPersons();
-        Person[] personName = new Person[persons.length];
+        Person[] personNames = new Person[persons.length];
         for (int i = 0; i < persons.length; i++) {
             Person person = persons[i];
-            if (checkRecruits(person) && person.getName().equalsIgnoreCase("Aleksandr")) {
-                personName[i] = person;
+            if (checkRecruits(person) && person.getName().equalsIgnoreCase(name)) {
+                personNames[i] = persons[i];
             }
         }
-        return personName;
+        return personNames;
     }
 }

@@ -5,8 +5,6 @@ import by.tms.model.MilitaryOffice;
 import by.tms.model.Person;
 import by.tms.model.PersonRegistry;
 
-import java.util.Arrays;
-
 public class Main {
     public static void main(String[] args) {
         Person[] persons = new Person[15];
@@ -21,7 +19,11 @@ public class Main {
         persons[8] = new Person("Alexandr", 28, "male", new Address("Belarus", "Vitebsk"));
         persons[9] = new Person("Marat", 36, "male", new Address("Belarus", "Gomel"));
         MilitaryOffice militaryOffice = new MilitaryOffice(new PersonRegistry(persons));
-        Person[] recruitsName = militaryOffice.checkNameRecruits("Alexandr");
-        System.out.println(Arrays.toString(recruitsName));
+        Person[] personNameAlex = militaryOffice.checkNameRecruits("Aleksandr");
+        for (int i = 0; i < personNameAlex.length; i++) {
+            if (personNameAlex[i] != null) {
+                System.out.println(personNameAlex);
+            }
+        }
     }
 }

@@ -15,12 +15,6 @@ public class Season {
         return "My favourite season is " + seasons;
     }
 
-    public String getDescription(Seasons winter) {
-        if (seasons == Seasons.WINTER || seasons == Seasons.AUTUMN) {
-            return "Cold season";
-        }
-        return "Warm season";
-    }
 
     public void getLikeSeasons(Seasons season) {
         switch (seasons) {
@@ -36,6 +30,13 @@ public class Season {
         for (Seasons seasons : Seasons.values()) {
             System.out.print(seasons.name() + " ");
             System.out.print(seasons.getAverageTemp() + " ");
+        }
+        System.out.println();
+    }
+
+    public void seasonsDescription() {
+        for (Seasons season : Seasons.values()) {
+            System.out.println(season + " " + season.getDescription());
         }
     }
 }
