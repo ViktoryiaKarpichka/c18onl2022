@@ -17,7 +17,7 @@ public class MilitaryOffice {
         return countRecruits;
     }
 
-    private static boolean checkRecruits(Person person) {
+    private boolean checkRecruits(Person person) {
         return person.getAge() >= 18 && person.getAge() <= 27 && person.getGender().equals("male");
     }
 
@@ -32,4 +32,17 @@ public class MilitaryOffice {
         }
         return personNames;
     }
+
+    public Person[] checkAddressRecruits(String city) {
+        Person[] peoples = personRegistry.getPersons();
+        Person[] recruits = new Person[peoples.length];
+        for (int i = 0; i < peoples.length; i++) {
+            Person person = peoples[i];
+            if (checkRecruits(person) && person.getAddress().getCity().equals("Minsk")) {
+                recruits[i] = peoples[i];
+            }
+        }
+        return recruits;
+    }
+
 }
