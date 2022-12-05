@@ -1,17 +1,24 @@
 package by.tms2.services;
 
-import by.tms2.model.Flower;
-import by.tms2.utils.FlowerType;
+import by.tms2.model.Bouquet;
+import by.tms2.model.FlowerMarket;
+
+import static by.tms2.model.Bouquet.count;
+
 
 public class Main {
+
     public static void main(String[] args) {
-        Flower[] flowers = new Flower[6];
-        flowers[0] = new Flower(FlowerType.ROSE.name(), 15);
-        flowers[1] = new Flower(FlowerType.LILY.name(), 7);
-        flowers[2] = new Flower(FlowerType.ASTER.name(), 5);
-        flowers[3] = new Flower(FlowerType.HERBERA.name(), 5);
-        flowers[4] = new Flower(FlowerType.TULIP.name(), 8);
-        flowers[5] = new Flower(FlowerType.CARNATION.name(), 11);
+        FlowerMarket flowerMarket = new FlowerMarket();
+        Bouquet rose = flowerMarket.getBouquet("ROSE", "ROSE", "ROSE");
+        Bouquet aster = flowerMarket.getBouquet("ASTER", "ASTER", "ASTER");
+        Bouquet lily = flowerMarket.getBouquet("LILY", "LILY", "LILY");
+        Bouquet tulip = flowerMarket.getBouquet("TULIP", "TULIP", "TULIP");
+        Bouquet allFlower = flowerMarket.getBouquet("ROSE", "LILY", "ASTER", "TULIP", "CARNATION", "HERBERA");
+        Bouquet[] bouquet = {rose, aster, lily, tulip, allFlower};
+        System.out.println(count);
+        System.out.println(rose);
+        System.out.println(allFlower.getPrice());
 
     }
 }
