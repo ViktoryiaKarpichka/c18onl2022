@@ -25,11 +25,13 @@ public class Run {
         robots[1] = new Robot(new SonyHead(110), new ToshibaHand(80), new SamsungLeg(75));
         robots[2] = new Robot(new ToshibaHead(105), new SamsungHand(90), new SonyLeg(80));
         int max = robots[0].getPrice();
+        int maxIndex = 0;
         for (int i = 0; i < robots.length; i++) {
             robots[i].action();
             if (max < robots[i].getPrice()) {
-                System.out.printf("The most expensive robot is %s, price - %d", robots[i], robots[i].getPrice());
+                maxIndex = i;
             }
         }
+        System.out.printf("The most expensive robot is %s, price - %d", robots[maxIndex], robots[maxIndex].getPrice());
     }
 }
