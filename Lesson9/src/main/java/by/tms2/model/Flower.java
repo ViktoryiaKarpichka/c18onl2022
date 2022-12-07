@@ -1,6 +1,6 @@
 package by.tms2.model;
 
-import lombok.AllArgsConstructor;
+import by.tms2.utils.FlowerType;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -8,9 +8,17 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
-public class Flower {
-    private String name;
-    private int cost;
 
+public class Flower {
+    public static int count;
+    private FlowerType flowerType;
+
+    public Flower(FlowerType flowerType) {
+        this.flowerType = flowerType;
+        count++;
+    }
+
+    public static int getCount() {
+        return count;
+    }
 }
