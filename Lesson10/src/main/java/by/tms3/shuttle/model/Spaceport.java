@@ -12,15 +12,15 @@ public class Spaceport {
     private IStart start;
 
     public void launch() {
-        if (!start.checkStartSystems()) {
-            System.out.println("prestart check failed");
-        } else {
+        if (start.checkStartSystems()) {
             start.engineStart();
             for (int i = 1; i <= 10; i--) {
                 if (i == 1) {
                     start.start();
                 }
             }
+        } else {
+            System.out.println("prestart check failed");
         }
     }
 }
