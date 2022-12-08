@@ -8,13 +8,19 @@ public class SpaceX implements IStart {
 
     @Override
     public boolean checkStartSystems() {
+        boolean checkStart = false;
         Scanner console = new Scanner(System.in);
         if (console.hasNext()) {
-            console.nextInt();
-            return true;
+            if (console.nextInt() > 100) {
+                checkStart = true;
+            } else {
+                checkStart = false;
+            }
         } else {
-            return false;
+            System.out.println("Enter tne number");
+            console.nextInt();
         }
+        return checkStart;
     }
 
     @Override
