@@ -5,23 +5,20 @@ import by.tms3.shuttle.utils.IStart;
 import java.util.Scanner;
 
 public class SpaceX implements IStart {
-
+private Scanner console = new Scanner(System.in);
     @Override
     public boolean checkStartSystems() {
         boolean checkStart = false;
-        Scanner console = new Scanner(System.in);
-        if (console.hasNext()) {
+        if (console.hasNextInt()) {
             if (console.nextInt() > 100) {
                 checkStart = true;
-            } else {
-                checkStart = false;
             }
         } else {
-            System.out.println("Enter tne number");
-            console.nextInt();
+            checkStart = false;
         }
         return checkStart;
     }
+
 
     @Override
     public void engineStart() {
