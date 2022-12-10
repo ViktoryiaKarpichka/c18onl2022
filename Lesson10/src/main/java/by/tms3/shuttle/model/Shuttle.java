@@ -9,7 +9,7 @@ public class Shuttle implements IStart {
     @Override
     public boolean checkStartSystems() {
         Random random = new Random();
-        return (random.nextInt(11) < 3);
+        return random.nextInt(11) < 3;
     }
 
     @Override
