@@ -13,6 +13,6 @@ public class Guitar implements Instrument {
 
     @Override
     public void play() {
-        System.out.println("Plays the guitar with a number of strings" + numberOfStrings);
+        System.out.println("Plays the guitar with a number of strings " + numberOfStrings);
     }
 }

@@ -4,18 +4,24 @@ import by.tms.model.Drum;
 import by.tms.model.Guitar;
 import by.tms.model.Trumpet;
 
+import static by.tms.services.Instrument.Type.*;
+
 public class Main {
     public static void main(String[] args) {
-
+        Instrument[] instruments = new Instrument[values().length];
+        instruments[0] = createInstrument(GUITAR, 6);
+        instruments[1] = createInstrument(DRUM, 30);
+        instruments[2] = createInstrument(TRUMPET, 10);
+        for (Instrument instrument : instruments) {
+            instrument.play();
+        }
     }
 
-    void createInstrument(Instrument.Type... types) {
-        Instrument[] instruments = new Instrument[types.length];
-        instruments[0] = new Guitar(7);
-        instruments[1] = new Drum(30);
-        instruments[2] = new Trumpet(10);
-        for (int i = 0; i < types.length; i++) {
-            instruments[i] = Instrument.Type[i];
-        }
+    private static Instrument createInstrument(Instrument.Type iInstrument, int parameter) {
+        return switch (iInstrument) {
+            case DRUM -> new Drum(parameter);
+            case GUITAR -> new Guitar(parameter);
+            case TRUMPET -> new Trumpet(parameter);
+        };
     }
 }
