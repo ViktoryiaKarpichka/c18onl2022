@@ -19,24 +19,18 @@ public class Main {
         persons[8] = new Person("Alexandr", 28, "male", new Address("Belarus", "Vitebsk"));
         persons[9] = new Person("Marat", 36, "male", new Address("Belarus", "Gomel"));
         MilitaryOffice militaryOffice = new MilitaryOffice(new PersonRegistry(persons));
-        for (int i = 0; i < persons.length; i++) {
-            if (persons[i].getAge() >= 18 && persons[i].getAge() <= 27 && persons[i].getGender().equals("male")) {
-                System.out.println(persons[i]);
-            }
-        }
-
-
-        Person[] personNameAlex = militaryOffice.checkNameRecruits("Alexandr");
+        Person[] personNameAlex = militaryOffice.getNameRecruits("Alexandr");
         for (int i = 0; i < personNameAlex.length; i++) {
             if (personNameAlex[i] != null) {
                 System.out.println(personNameAlex[i]);
             }
         }
-        Person[] personAddress = militaryOffice.checkAddressRecruits("Minsk");
+        Person[] personAddress = militaryOffice.getAddressRecruits("Minsk");
         for (int i = 0; i < personAddress.length; i++) {
             if (personAddress[i] != null) {
                 System.out.println(personAddress[i]);
             }
         }
+        militaryOffice.getRecruits();
     }
 }
