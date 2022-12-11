@@ -1,13 +1,11 @@
 package by.tms.services;
 
-public interface Instrument {
+import lombok.Getter;
 
+public interface Instrument {
+    @Getter
     enum Type {
         GUITAR, TRUMPET, DRUM;
-
-        Type() {
-        }
-
     }
 
     String KEY = "До мажор";
