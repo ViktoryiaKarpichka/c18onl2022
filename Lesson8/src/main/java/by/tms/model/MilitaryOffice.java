@@ -7,6 +7,14 @@ public class MilitaryOffice {
         this.personRegistry = personRegistry;
     }
 
+    public void getRecruits() {
+        for (Person person : personRegistry.getPersons()) {
+            if (checkRecruits(person)) {
+                System.out.print(person.getName() + " ");
+            }
+        }
+    }
+
     public int countRecruits() {
         int countRecruits = 0;
         for (Person person : personRegistry.getPersons()) {
@@ -21,7 +29,7 @@ public class MilitaryOffice {
         return person.getAge() >= 18 && person.getAge() <= 27 && person.getGender().equals("male");
     }
 
-    public Person[] checkNameRecruits(String name) {
+    public Person[] getNameRecruits(String name) {
         Person[] persons = personRegistry.getPersons();
         Person[] personNames = new Person[persons.length];
         for (int i = 0; i < persons.length; i++) {
@@ -33,7 +41,7 @@ public class MilitaryOffice {
         return personNames;
     }
 
-    public Person[] checkAddressRecruits(String city) {
+    public Person[] getAddressRecruits(String city) {
         Person[] peoples = personRegistry.getPersons();
         Person[] recruits = new Person[peoples.length];
         for (int i = 0; i < peoples.length; i++) {

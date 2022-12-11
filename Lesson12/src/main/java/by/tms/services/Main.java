@@ -6,7 +6,6 @@ public class Main {
             checkAuthorization("Ivan_1", "Petrov_12345678910", "Petrov_1234567891");
         } catch (WrongLoginException e) {
             System.out.println(e.getMessage());
-            ;
         } catch (WrongPasswordException e) {
             System.out.println(e.getMessage());
         }
