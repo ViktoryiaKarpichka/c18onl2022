@@ -12,7 +12,7 @@ public class Main {
         Fruit apricot = new Apricot(0.5, 10);
         Fruit[] fruit = {apple, pear, apricot};
         for (Fruit fruits : fruit) {
-            System.out.println(fruits.getPrice() * fruits.getWeight());
+            fruits.calculateCostOfFruit();
         }
     }
 }

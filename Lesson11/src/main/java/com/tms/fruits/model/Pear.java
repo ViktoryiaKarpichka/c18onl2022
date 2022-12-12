@@ -13,9 +13,8 @@ public class Pear extends Fruit {
     }
 
     @Override
-    void costOfFruit() {
-        double costOfFruit = getPrice() * getWeight();
-        System.out.println(costOfFruit);
+    public void calculateCostOfFruit() {
+        System.out.println(getPrice() * getWeight());
     }
 
 }

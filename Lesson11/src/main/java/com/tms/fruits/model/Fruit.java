@@ -16,10 +16,9 @@ public abstract class Fruit {
         this.price = price;
     }
 
-    abstract void costOfFruit();
+    public abstract void calculateCostOfFruit();
 
     public final void printManufacturerInfo() {
         System.out.print("Made in Belarus");
     }
-
 }

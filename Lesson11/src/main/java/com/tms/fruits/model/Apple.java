@@ -13,8 +13,7 @@ public class Apple extends Fruit {
     }
 
     @Override
-    void costOfFruit() {
-        double costOfFruit = getWeight() * getPrice();
-        System.out.println(costOfFruit);
+    public void calculateCostOfFruit() {
+        System.out.println(getWeight() * getPrice());
     }
 }
