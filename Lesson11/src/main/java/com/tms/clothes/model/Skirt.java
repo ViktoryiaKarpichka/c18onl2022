@@ -15,6 +15,6 @@ public class Skirt extends Clothes implements WomanClothes {
 
     @Override
     public void dressWoman() {
-        System.out.printf("The Woman wearing skirt size- %d, color - %s cost - %d", getSize(), getColor(), getPrice());
+        System.out.printf("The Woman wearing skirt size- %d, color - %s, cost - %d\n", getSize(), getColor(), getPrice());
     }
 }

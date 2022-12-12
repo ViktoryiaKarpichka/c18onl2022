@@ -15,6 +15,6 @@ public class Tie extends Clothes implements MenClothes {
 
     @Override
     public void dressMan() {
-        System.out.printf("The Man wearing Tie size- %d, color - %s cost - %d", getSize(), getColor(), getPrice());
+        System.out.printf("The Man wearing Tie size- %d, color - %s, cost - %d\n", getSize(), getColor(), getPrice());
     }
 }

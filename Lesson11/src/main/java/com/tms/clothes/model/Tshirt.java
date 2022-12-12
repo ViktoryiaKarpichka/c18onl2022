@@ -17,12 +17,11 @@ public class Tshirt extends Clothes implements MenClothes, WomanClothes {
 
     @Override
     public void dressMan() {
-        System.out.printf("The Man wearing T-shirt size- %d, color - %s cost - %d", getSize(), getColor(), getPrice());
+        System.out.printf("The Man wearing T-shirt size- %d, color - %s, cost - %d\n", getSize(), getColor(), getPrice());
     }
-
 
     @Override
     public void dressWoman() {
-        System.out.printf("The Woman wearing T-shirt size- %d, color - %s cost - %d", getSize(), getColor(), getPrice());
+        System.out.printf("The Woman wearing T-shirt size- %d, color - %s, cost - %d\n", getSize(), getColor(), getPrice());
     }
 }
