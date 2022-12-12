@@ -8,13 +8,12 @@ import lombok.ToString;
 @Getter
 @ToString
 public class Apricot extends Fruit {
-    public Apricot(double weight, double price) {
-        super(weight, price);
+    public Apricot(double weight) {
+        super(weight);
     }
 
     @Override
-    public double calculateCostOfFruit() {
-        return getWeight() * getPrice();
+    double costOfFruit() {
+        return 0;
     }
-
 }

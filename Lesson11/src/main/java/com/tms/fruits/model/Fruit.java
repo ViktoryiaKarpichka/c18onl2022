@@ -9,16 +9,15 @@ import lombok.ToString;
 @ToString
 public abstract class Fruit {
     private double weight;
-    private double price;
 
-    public Fruit(double weight, double price) {
+    public Fruit(double weight) {
         this.weight = weight;
-        this.price = price;
     }
 
-    abstract double calculateCostOfFruit();
+    abstract double costOfFruit();
 
     public final void printManufacturerInfo() {
         System.out.print("Made in Belarus");
     }
+
 }

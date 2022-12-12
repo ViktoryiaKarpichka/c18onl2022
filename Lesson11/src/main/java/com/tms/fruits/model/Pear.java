@@ -8,13 +8,19 @@ import lombok.ToString;
 @Getter
 @Setter
 public class Pear extends Fruit {
+    private double price;
+
     public Pear(double weight, double price) {
-        super(weight, price);
+        super(weight);
+        this.price = price;
+    }
+
+    public Pear(double weight) {
+        super(weight);
     }
 
     @Override
-    public double calculateCostOfFruit() {
-        return getWeight() * getPrice();
+    double costOfFruit() {
+        return getWeight();
     }
-
 }
