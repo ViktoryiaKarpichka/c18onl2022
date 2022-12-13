@@ -16,11 +16,11 @@ public class Pants extends Clothes implements MenClothes, WomanClothes {
 
     @Override
     public void dressMan() {
-        System.out.printf("The Man wearing pants size- %d, color - %s cost - %d", getSize(), getColor(), getPrice());
+        System.out.printf("The Man wearing pants size- %d, color - %s, cost - %d\n", getSize(), getColor(), getPrice());
     }
 
     @Override
     public void dressWoman() {
-        System.out.printf("The Woman wearing pants size- %d, color - %s cost - %d", getSize(), getColor(), getPrice());
+        System.out.printf("The Woman wearing pants size- %d, color - %s, cost - %d\n", getSize(), getColor(), getPrice());
     }
 }
