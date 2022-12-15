@@ -43,6 +43,7 @@
         </dependency>
     </dependencies>
 
+
     <modules>
         <module>Lesson1</module>
         <module>Lesson2</module>
@@ -56,5 +57,6 @@
         <module>Lesson10</module>
         <module>Lesson12</module>
         <module>Lesson11</module>
+        <module>Lesson13</module>
     </modules>
 </project>
