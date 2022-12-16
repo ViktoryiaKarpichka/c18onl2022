@@ -9,6 +9,6 @@ import lombok.ToString;
 @Setter
 @ToString
 @AllArgsConstructor
-abstract public class Figure {
+public abstract class Figure {
     private FigureType figureType;
 }
