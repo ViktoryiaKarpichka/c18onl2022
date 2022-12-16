@@ -1,48 +1,80 @@
 package by.tms.model;
 
-import static org.apache.commons.lang3.StringUtils.split;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
 public class TextMethod {
-    public static char[] cutOutStrings(String text) {
-        int start = text.indexOf("а"); //не знаю, как быть с регистром и если нет таких букв? тогда выдает ошибку
-        int end = text.lastIndexOf("в");
-        char[] charText = new char[end - start];
-        text.getChars(start, end, charText, 0);
-        return charText;
+    public String cutOutStrings(String text) {
+        return text.substring(text.indexOf("а"), text.lastIndexOf("в"));
     }
 
-    public static int getCountOfWords(String text) {
+    public void replaceSymbolByIndex(String text) {
+        String[] words = text.split(" ");
+        for (String word : words) {
+            if (word != null && word.length() > 4) {
+                System.out.print(word.replace(word.charAt(3), word.charAt(0)) + " ");
+            }
+        }
+    }
+
+    public void printPalindrome(String text) {
+        String[] words = text.split(" ");
+        for (int i = 0; i < words.length; i++) {
+            if (checkPalindrome(words[i])) {
+                System.out.print(words[i] + " ");
+            }
+        }
+        System.out.println();
+    }
+
+    public void printSentences(String text) {
+        String[] words = text.split("\\.");
+        for (int i = 0; i < words.length; i++) {
+
+        }
+    }
+
+    public int getCountOfWords(String text) {
         int count = text.split(" ").length;
         return count;
     }
 
-    public static boolean checkReversWords(String text) {
-        boolean isReversWord = false;
+    public boolean checkPalindrome(String text) {
+        return new StringBuilder(text).reverse().toString().equals(text);
+    }
+
+    public String getTwoMediumSymbol(String text) {
+        String mediumSymbol;
+        if (isNotEmpty(text) && text.length() % 2 == 0) {
+            mediumSymbol = text.substring(text.length() / 2 - 1, text.length() / 2 + 1);
+        } else {
+            mediumSymbol = "odd number of letters";
+        }
+        return mediumSymbol;
+    }
+
+    public int getCountLatinAlphabet(String text) {
         String[] words = text.split(" ");
-        for (String word : words) {
-            if (new StringBuilder(word).reverse().toString().equals(word)) {
-                isReversWord = true;
+        Pattern pattern = Pattern.compile("^[a-zA-Z]+$");
+        Matcher matcher;
+        int count = 0;
+        for (int i = 0; i < words.length; i++) {
+            matcher = pattern.matcher(words[i]);
+            if (matcher.matches()) {
+                count++;
             }
         }
-        return isReversWord;
+        return count;
     }
-
-    // с этим методом запуталась, т к это воид и не знаю как передать строку для разделения на слова, ну и повторяющийся код
-    public void getReversWords() {
-        String[] words = split(" ");
-        for (String word : words) {
-            if (new StringBuilder(word).reverse().toString().equals(word)) {
-                System.out.println(word);
-            }
-        }
-    }
-
-    //та же проблема
-    public void replaceSymbolByIndex(String text) {
-        String[] words = text.split(" ");
-        for (String word : words) {
-            System.out.println(word.replace(word.charAt(3), word.charAt(0)));
-        }
-    }
-
 }
