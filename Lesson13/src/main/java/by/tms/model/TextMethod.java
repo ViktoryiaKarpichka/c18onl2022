@@ -22,8 +22,8 @@ public class TextMethod {
     public void replaceSymbolByIndex(String text) {
         String[] words = text.split(" ");
         for (String word : words) {
-            if (word != null && word.length() > 4) {
-                System.out.print(word.replace(word.charAt(3), word.charAt(0)) + " ");
+            if (word.length() > 4) {
+                System.out.println(word.replace(word.charAt(3), word.charAt(0)));
             }
         }
     }
@@ -32,12 +32,14 @@ public class TextMethod {
         String[] words = text.split(" ");
         for (int i = 0; i < words.length; i++) {
             if (checkPalindrome(words[i])) {
-                System.out.print(words[i] + " ");
+                System.out.println(words[i]);
             }
         }
         System.out.println();
     }
 
+    // После запуска программы на экран должны выводиться только те предложения в которых от 3-х до 5-и слов.
+    //подскажите как сделать
     public void printSentences(String text) {
         String[] words = text.split("\\.");
         for (int i = 0; i < words.length; i++) {
@@ -66,7 +68,7 @@ public class TextMethod {
 
     public int getCountLatinAlphabet(String text) {
         String[] words = text.split(" ");
-        Pattern pattern = Pattern.compile("^[a-zA-Z]+$");
+        Pattern pattern = Pattern.compile("[a-zA-Z]+");
         Matcher matcher;
         int count = 0;
         for (int i = 0; i < words.length; i++) {

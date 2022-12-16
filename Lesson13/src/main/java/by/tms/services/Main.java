@@ -17,13 +17,13 @@ public class Main {
         System.out.println(textMethod.getTwoMediumSymbol(n));
         System.out.println(textMethod.getCountLatinAlphabet(text2));
 
-        Employee[] employee = new Employee[5];
+        IReport[] employee = new Employee[5];
         employee[0] = new Employee("A.S. Petrov", 2500.00);
         employee[1] = new Employee("D.K. Sidorov", 2300.500);
         employee[2] = new Employee("P.L. Ivanova", 1900.688);
         employee[3] = new Employee("D.K. Kovaleva", 2680.900);
         employee[4] = new Employee("D.K. Zhdanov", 2700.598);
-        for (Employee employer : employee) {
+        for (IReport employer : employee) {
             employer.generateReport();
         }
     }
