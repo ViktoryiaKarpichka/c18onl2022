@@ -39,11 +39,10 @@ public class TextMethod {
     }
 
     // После запуска программы на экран должны выводиться только те предложения в которых от 3-х до 5-и слов.
-    // подскажите, как сделать
+    // Ничего не приходит в голову
     public void printSentences(String text) {
         String[] words = text.split("\\.");
         for (int i = 0; i < words.length; i++) {
-
         }
     }
 
