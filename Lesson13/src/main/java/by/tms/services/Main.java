@@ -8,6 +8,7 @@ public class Main {
         String n = "kazaki";
         String text = "Мой дед попросил сделать заказ для него. Однако, был уже поздний вечер.";
         String text2 = "Методы доступа называют ещё аксессорами (от англ. access — доступ), или по отдельности — геттерами (англ. get — чтение) and сеттерами (англ. set — запись)";
+        String text3 = "Привет как дела. Пойдем попьем чая с бубликами.";
         TextMethod textMethod = new TextMethod();
         System.out.println(textMethod.cutOutStrings(text));
         textMethod.replaceSymbolByIndex(text);
@@ -16,6 +17,7 @@ public class Main {
         System.out.println(textMethod.getCountOfWords(text));
         System.out.println(textMethod.getTwoMediumSymbol(n));
         System.out.println(textMethod.getCountLatinAlphabet(text2));
+        textMethod.printSentences(text3);
 
         IReport[] employee = new Employee[5];
         employee[0] = new Employee("A.S. Petrov", 2500.00);

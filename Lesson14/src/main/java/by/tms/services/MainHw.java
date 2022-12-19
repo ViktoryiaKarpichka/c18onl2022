@@ -9,5 +9,4 @@ public class MainHw {
         System.out.println(regex.validate(str));
         regex.getCountLatinSymbol();
     }
-
 }
