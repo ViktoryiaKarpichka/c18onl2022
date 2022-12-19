@@ -1,4 +1,4 @@
-package by.tms.services;
+package by.tms.exception;
 
 public class WrongLoginException extends Exception {
     public WrongLoginException() {

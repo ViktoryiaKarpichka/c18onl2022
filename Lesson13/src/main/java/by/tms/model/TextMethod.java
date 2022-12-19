@@ -43,6 +43,9 @@ public class TextMethod {
     public void printSentences(String text) {
         String[] words = text.split("\\.");
         for (int i = 0; i < words.length; i++) {
+            if (words[i].split(" ").length >= 3 && words[i].split(" ").length <= 5 || checkPalindrome(words[i])) {
+                System.out.println(words[i]);
+            }
         }
     }
 
