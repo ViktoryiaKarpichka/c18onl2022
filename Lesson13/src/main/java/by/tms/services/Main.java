@@ -17,7 +17,7 @@ public class Main {
         System.out.println(textMethod.getCountOfWords(text));
         System.out.println(textMethod.getTwoMediumSymbol(n));
         System.out.println(textMethod.getCountLatinAlphabet(text2));
-        textMethod.printSentences(text3);
+        textMethod.printSentences(text);
 
         IReport[] employee = new Employee[5];
         employee[0] = new Employee("A.S. Petrov", 2500.00);
