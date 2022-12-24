@@ -1,12 +1,16 @@
-package com.tms.model;
+package com.tms.utils;
 
-public abstract class TextFormatter {
+
+public class TextFormatter {
+    public static final int MIN_COUNT_WORDS = 3;
+    public static final int MAX_COUNT_WORDS = 5;
+
     public String[] splitByPoint(String string) {
         return string.split("\\. ");
     }
 
     public boolean checkSentence(String[] strings) {
-        return strings.length >= 3 && strings.length <= 5;
+        return strings.length >= MIN_COUNT_WORDS && strings.length <= MAX_COUNT_WORDS;
     }
 
     public boolean checkPalindrome(String[] strings) {

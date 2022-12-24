@@ -8,6 +8,6 @@ public class FourthMain {
     public static void main(String[] args) {
         TextHandler textHandler = new TextHandler("Какое-то тестовое предложение. Шалаш стоит в лесу. " +
                 "Ещё одно какое-то тестовое предложение.");
-        System.out.println(textHandler.outPutSentences());
+        System.out.println(textHandler.getSentences());
     }
 }

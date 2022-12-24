@@ -22,4 +22,3 @@ public class ThreeParameters<T extends String, K extends Animal & Serializable, 
         System.out.println("obj1: " + getObj3());
     }
 }
-// можно ломбок использовать или генерировать getter, принимающий на вход параметры типа (T, V, K)??

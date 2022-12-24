@@ -1,16 +1,21 @@
 package com.tms.task3.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Arrays;
 
-@AllArgsConstructor
 @Getter
 @Setter
 public class MinMax<T extends Number> {
     private T[] array;
+
+    public MinMax(T[] array) throws ArrayIndexOutOfBoundsException {
+        this.array = array;
+        if (array == null) {
+            throw new ArrayIndexOutOfBoundsException("Massive is null");
+        }
+    }
 
     public <T> T minElementOfMassive(T[] array) {
         Arrays.sort(array);
@@ -22,7 +27,7 @@ public class MinMax<T extends Number> {
         return array[array.length - 1];
     }
 
-    public void printInfo(T[] array) {
+    public void printInfo() {
         System.out.println(Arrays.toString(array));
     }
 }

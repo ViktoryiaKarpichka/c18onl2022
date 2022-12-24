@@ -16,10 +16,10 @@ public class Third {
         strings.add("стул");
         strings.add("машина");
 
-        System.out.println(outputPalindromes(strings));
+        System.out.println(getPalindromes(strings));
     }
 
-    private static List<String> outputPalindromes(List<String> strings) {
+    private static List<String> getPalindromes(List<String> strings) {
 //        strings.removeIf(temp -> !temp.equalsIgnoreCase(StringUtils.reverse(temp)));
         List<String> result = new ArrayList<>();
         for (String string : strings) {
