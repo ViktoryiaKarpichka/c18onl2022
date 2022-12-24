@@ -11,7 +11,7 @@ public class Main {
         //* методы возвращающие значения трех переменных. Создать метод, выводящий на консоль имена классов для трех переменных класса.
         //* Наложить ограничения на параметры типа: T должен реализовать интерфейс Comparable (String),
         //* V должен реализовать интерфейс Serializable и расширять класс Animal, K должен расширять класс Number.
-        ThreeParameters<String, Cat, Integer> threeParameters1 = new ThreeParameters<>("Object1", new Cat(), 1);
-        threeParameters1.printInfo();
+        ThreeParameters<String, Cat, Integer> threeParameters = new ThreeParameters<>("Object1", new Cat(), 1);
+        threeParameters.printInfo();
     }
 }
