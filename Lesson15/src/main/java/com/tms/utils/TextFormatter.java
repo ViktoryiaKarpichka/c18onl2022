@@ -1,6 +1,8 @@
 package com.tms.utils;
 
+import lombok.experimental.UtilityClass;
 
+@UtilityClass
 public class TextFormatter {
     public static final int MIN_COUNT_WORDS = 3;
     public static final int MAX_COUNT_WORDS = 5;
