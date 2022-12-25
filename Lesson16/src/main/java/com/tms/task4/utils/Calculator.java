@@ -11,17 +11,17 @@ public class Calculator {
     }
 
     public static <T extends Number, V extends Number> T multiply(T number, V value) {
-        Number multiply = number.doubleValue() * number.doubleValue();
+        Number multiply = number.doubleValue() * value.doubleValue();
         return (T) multiply;
     }
 
     public static <T extends Number, V extends Number> T divide(T number, V value) {
-        Number divide = number.doubleValue() / number.doubleValue();
+        Number divide = number.doubleValue() / value.doubleValue();
         return (T) divide;
     }
 
     public static <T extends Number, V extends Number> T subtraction(T number, V value) {
-        Number subtraction = number.doubleValue() - number.doubleValue();
+        Number subtraction = number.doubleValue() - value.doubleValue();
         return (T) subtraction;
     }
 }
