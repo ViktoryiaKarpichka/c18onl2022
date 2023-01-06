@@ -1,7 +1,6 @@
 package com.tms.task3.services;
 
 import com.tms.task3.model.MinMax;
-import com.tms.task3.model.MinMaxException;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,32 +8,36 @@ public class Main {
 //        * Массив является переменной класса. Массив должен передаваться в класс через конструктор.
 //        * Написать метод принимающий MinMax объект и печатающий информацию об элементах.
 
-        try {
-            Double[] arrayDouble = new Double[0];
-            MinMax<Double> doubleArray = null;
-            doubleArray = new MinMax<>(arrayDouble);
-            System.out.println(doubleArray.minElementOfMassive(arrayDouble));
-            doubleArray.printInfo();
-        } catch (MinMaxException e) {
-            System.out.println(e.getMessage());
-        }
+        Double[] arrayDouble = {3908.0, 4.06, 5.5};
+        Integer[] arrayInt = {2, 4, 9};
 
-        Integer[] arrayInt = new Integer[]{2, 4, 9};
-        MinMax<Integer> intArray = null;
-        try {
-            intArray = new MinMax<>(arrayInt);
-        } catch (MinMaxException e) {
-            System.out.println(e.getMessage());
-        }
+        MinMax<?> doubleMinMax = new MinMax<>(arrayDouble);
+        MinMax<?> intMinMax = new MinMax<>(arrayInt);
 
-        System.out.println(intArray.maxElementOfMassive(arrayInt));
-        intArray.printInfo();
+        printMinAndMaxValue(doubleMinMax);
+        getInfo(doubleMinMax);
+        printMinAndMaxValue(intMinMax);
+        getInfo(intMinMax);
+
+        // Long[] arrayLong =new Long[0];
+        // MinMax<?> minMaxLong = createMinMax(arrayLong);
     }
-// а здесь не получается что-то
-    //      public static MinMax createMinMax(T[] array) throws MinMaxException {
-    //          if(array == null || array.length == 0) {
-    //               throw new MinMaxException();
-    //           }
-    //           return new MinMax(array);
-    //   }
+
+    public static void printMinAndMaxValue(MinMax<?> minMax) {
+        System.out.println("Минимальный элемент " + minMax.minElementOfMassive() + "\n" + "Максимальный элемент " + minMax.maxElementOfMassive());
+    }
+
+    private static void getInfo(MinMax<?> minMax) {
+        for (int i = 0; i < minMax.getArray().length; i++) {
+            System.out.println("Элемент " + minMax.getArray()[i] + " типа " + minMax.getArray()[i].getClass().getName());
+        }
+        System.out.println();
+    }
+
+    public static <T extends Number> MinMax<T> createMinMax(T[] array) {
+        if (array == null || array.length == 0) {
+            throw new IllegalArgumentException("incorrect input parameters");
+        }
+        return new MinMax<>(array);
+    }
 }

@@ -1,6 +1,7 @@
 package com.tms.task3.model;
 
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 
 import java.util.Arrays;
@@ -10,20 +11,20 @@ import java.util.Arrays;
 public class MinMax<T extends Number> {
     private T[] array;
 
-    public MinMax(T[] array) throws MinMaxException {
-        if (array == null || array.length == 0) {
-            throw new MinMaxException("Massive is null");
+    public MinMax(@NonNull T[] array) {
+        if (array.length == 0) {
+            throw new IllegalArgumentException("Massive is null");
         } else {
             this.array = array;
         }
     }
 
-    public <T> T minElementOfMassive(T[] array) {
+    public T minElementOfMassive() {
         Arrays.sort(array);
-        return (T) array[0];
+        return array[0];
     }
 
-    public <T> T maxElementOfMassive(T[] array) {
+    public T maxElementOfMassive() {
         Arrays.sort(array);
         return array[array.length - 1];
     }
@@ -32,11 +33,5 @@ public class MinMax<T extends Number> {
         System.out.println(Arrays.toString(array));
     }
 
-    public MinMax createMinMax(T[] array) throws MinMaxException {
-        if (array == null || array.length == 0) {
-            throw new MinMaxException();
-        }
-        return new MinMax<T>(array);
-    }
 }
 
