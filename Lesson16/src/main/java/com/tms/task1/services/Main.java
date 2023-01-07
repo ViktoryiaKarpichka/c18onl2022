@@ -1,24 +1,30 @@
 package com.tms.task1.services;
 
-import com.tms.task1.models.Data;
+import java.io.File;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import static java.util.Objects.nonNull;
 
 //1) Список каталога
 //        * Написать метод который циклически просматривает содержимое заданного каталога и выводит на печать информацию о всех файлах и каталогах, находящихся в нем и в его подкаталогах.
 //        * Используем рекурсию.
 public class Main {
     public static void main(String[] args) {
-        //не знаю как эту задачу решать, просто практикую создание списка
-        List<Data> objects = new ArrayList<>();
-        objects.add(new Data("0"));
-        objects.add(new Data("1"));
-        objects.add(new Data("2"));
-        Iterator<Data> iterator = objects.iterator();
-        while (iterator.hasNext()) {
-            iterator.next().printInfo();
+        readFiles(new File("D:\\Study"));
+    }
+
+    public static void readFiles(File directory) {
+        if (directory.isDirectory()) {
+            File[] files = directory.listFiles();
+            if (nonNull(files)) {
+                for (File file : files) {
+                    if (file.isFile()) {
+                        System.out.println(file.getName() + " файл");
+                    } else {
+                        System.out.println(file.getName() + " каталог");
+                        readFiles(file);
+                    }
+                }
+            }
         }
     }
 }

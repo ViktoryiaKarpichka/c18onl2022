@@ -4,24 +4,26 @@ import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class Calculator {
-    //?????
-    public static <T extends Number, V extends Number> T sum(T number, V value) {
-        Number sum = number.doubleValue() + value.doubleValue();
-        return (T) sum;
+    public static <T extends Number, V extends Number> double sum(T number, V value) {
+        return number.doubleValue() + value.doubleValue();
     }
 
-    public static <T extends Number, V extends Number> T multiply(T number, V value) {
-        Number multiply = number.doubleValue() * value.doubleValue();
-        return (T) multiply;
+    public static <T extends Number, V extends Number> double multiply(T number, V value) {
+        return number.doubleValue() * value.doubleValue();
     }
 
-    public static <T extends Number, V extends Number> T divide(T number, V value) {
-        Number divide = number.doubleValue() / value.doubleValue();
-        return (T) divide;
+    public static <T extends Number, V extends Number> Number divide(T number, V value) {
+        return number.doubleValue() / value.doubleValue();
+
     }
 
-    public static <T extends Number, V extends Number> T subtraction(T number, V value) {
-        Number subtraction = number.doubleValue() - value.doubleValue();
-        return (T) subtraction;
+    public static <T extends Number, V extends Number> double subtraction(T number, V value) {
+        return number.doubleValue() - value.doubleValue();
+
     }
+
+    //public static <T extends Number, V extends Number> T subtraction(T number, V value) {
+    //  Number subtraction = number.doubleValue() - value.doubleValue();
+    //return (T) subtraction;
+    //}
 }
