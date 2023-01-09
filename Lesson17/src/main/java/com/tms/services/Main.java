@@ -6,26 +6,31 @@ import com.tms.models.Shop;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 
 public class Main {
     public static void main(String[] args) {
-        ShopServiceAware productList = new ServiceShop(new Shop());
-        productList.addProduct(new Product(123, "car", 10));
-        productList.addProduct(new Product(246, "doll", 25));
-        productList.addProduct(new Product(367, "toy", 6));
-        productList.addProduct(new Product(465, "teddy", 65));
+        ShopServiceAware shop = new ServiceShop(new Shop());
+        shop.addProduct(new Product(123L, "car", 10));
+        shop.addProduct(new Product(246L, "doll", 25));
+        shop.addProduct(new Product(367L, "toy", 6));
+        shop.addProduct(new Product(465L, "teddy", 65));
 
-        ArrayList<Product> productArrayList = new ArrayList<>(productList.getProducts());
-        Collections.sort(productArrayList, new Comparator<Product>() {
+        List<Product> listProduct = new ArrayList<>(shop.getProducts());
+        System.out.println(shop.getProducts());
+        Collections.sort(listProduct, new Comparator<Product>() {
             @Override
             public int compare(Product o1, Product o2) {
                 return Integer.compare(o1.getPrice(), o2.getPrice());
             }
         });
-        System.out.println(productArrayList);
-        System.out.println(productList.deleteProduct(new Product(123, "car", 10)));
-        // ???? по порядку добавления не могу сообразить как
+        System.out.println(listProduct);
+        System.out.println(shop.deleteProduct(new Product(123L, "car", 10)));
+        System.out.println(new ArrayList<>(shop.getProducts()));
+        Collections.reverse(shop.getProducts());
+        System.out.println(new ArrayList<>(shop.getProducts()));
+        shop.editProduct(246L, "doll", 100); // что-то не то здесь
 
     }
 }

@@ -11,5 +11,5 @@ public interface ShopServiceAware {
 
     boolean deleteProduct(Product product);
 
-    void editProduct(int id, String name, int Price, Product product);
+    void editProduct(Long id, String name, int Price);
 }
