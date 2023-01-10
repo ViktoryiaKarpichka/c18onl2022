@@ -18,7 +18,10 @@ public class ServiceShop implements ShopServiceAware {
 
     @Override
     public boolean addProduct(Product product) {
-        return shop.getProducts().add(product);
+        if (!shop.getProducts().contains(product)) {
+            return shop.getProducts().add(product);
+        }
+        return false;
     }
 
     @Override
@@ -35,21 +38,12 @@ public class ServiceShop implements ShopServiceAware {
         // return shop.getProducts().removeIf(product1 -> product1.getId() == product.getId());
     }
 
-    //немного не понимаю, редактировать на основании чего?
-// * редактировать товар(принимает объект товара и редактирует им список товаров)
     @Override
-    public void editProduct(int id, String name, int price, Product product) {
+    public void editProduct(Long id, String name, int price) {
         for (Product products : shop.getProducts()) {
-            if (products.getName().equals(name)) {
-                products.setName(name);
-                break;
-            }
-            if (products.getPrice() == price) {
-                product.setPrice(price);
-                break;
-            }
             if (products.getId() == id) {
-                product.setPrice(price);
+                products.setName(name);
+                products.setPrice(price);
                 break;
             }
         }

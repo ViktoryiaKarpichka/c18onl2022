@@ -12,7 +12,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @ToString
 public class Product {
-    private int id;
+    private Long id;
     private String name;
     private int price;
 
