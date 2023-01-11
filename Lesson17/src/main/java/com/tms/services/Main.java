@@ -19,14 +19,14 @@ public class Main {
         shop.addProduct(new Product(465L, "teddy", 65));
 
         List<Product> listProduct = new ArrayList<>(shop.getProducts());
-        System.out.println(shop.getProducts());
         Collections.sort(listProduct, comparingInt(Product::getPrice));
         System.out.println(listProduct);
         System.out.println(shop.deleteProduct(new Product(123L, "car", 10)));
-        System.out.println(new ArrayList<>(shop.getProducts()));
-        Collections.reverse(shop.getProducts());
-        System.out.println(new ArrayList<>(shop.getProducts()));
-        shop.editProduct(246L, "doll", 100); // что-то не то здесь
+        List<Product> tempProduct = new ArrayList<>(shop.getProducts());
+        Collections.reverse(tempProduct);
+        System.out.println(tempProduct);
+        shop.editProduct(246L, "doll", 100);
+        System.out.println(shop.getProducts());
 
     }
 }
