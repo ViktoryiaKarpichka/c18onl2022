@@ -1,5 +1,7 @@
 package by.tms.services;
 
+import by.tms.models.OneMethod;
+
 public class Task3 {
     public static void main(String[] args) {
 //* 3. Создать обобщенный функциональный интерфейс.
@@ -11,6 +13,11 @@ public class Task3 {
 //     * - если в консоль введена цифра 2, то: использования интерфейса с
 //     * целочисленным типом и передать в метод интерфейса логику
 //     * нахождения факториала числа.
+        try {
+            new OneMethod().chooseNumberForOperation();
+        } catch (Exception exception) {
+            System.out.println("Incorrect data");
+        }
 
     }
 }

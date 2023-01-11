@@ -40,10 +40,10 @@ public class ServiceShop implements ShopServiceAware {
 
     @Override
     public void editProduct(Long id, String name, int price) {
-        for (Product products : shop.getProducts()) {
-            if (products.getId() == id) {
-                products.setName(name);
-                products.setPrice(price);
+        for (Product product : shop.getProducts()) {
+            if (product.getId().equals(id)) {
+                product.setName(name);
+                product.setPrice(price);
                 break;
             }
         }
