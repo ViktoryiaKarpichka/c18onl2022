@@ -14,6 +14,7 @@ public class Task3 {
 //     * целочисленным типом и передать в метод интерфейса логику
 //     * нахождения факториала числа.
         try {
+            System.out.println("Enter the number 1 or 2");
             new OneMethod().chooseNumberForOperation();
         } catch (Exception exception) {
             System.out.println("Incorrect data");
