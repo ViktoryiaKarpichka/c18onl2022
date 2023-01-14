@@ -10,15 +10,13 @@ public class OneMethod {
         switch (console.nextInt()) {
             case 1 -> {
                 OperationAware<String> func = this::reversedString;
-                String result = func.operation(console.next());
-                System.out.println(result);
+                System.out.println(func.operation(console.next()));
             }
             case 2 -> {
                 OperationAware<Long> func = value -> factorial(value);
-                long result = func.operation(console.nextLong());
-                System.out.println(result);
+                System.out.println(func.operation(console.nextLong()));
             }
-            default -> throw new RuntimeException();
+            default -> throw new IllegalArgumentException("You entered the wrong number");
         }
     }
 
