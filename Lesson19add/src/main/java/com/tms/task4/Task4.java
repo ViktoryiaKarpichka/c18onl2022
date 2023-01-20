@@ -5,6 +5,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
+import static java.util.Comparator.comparing;
+
 public class Task4 {
     public static void main(String[] args) {
         // 4) Создать класс Товар, имеющий переменные имя, цена, рейтинг.
@@ -26,26 +28,16 @@ public class Task4 {
                 new Product("armchair", 50, 4)));
 
         List<Category> categories = Arrays.asList(furniture, clothes, electronics);
-        categories.stream()
-                .flatMap(category -> category.getProducts().stream())
-                .sorted(Comparator.comparing(Product::getPrice))
-                .forEach(System.out::println);
 
-        categories.stream()
-                .flatMap(category -> category.getProducts().stream())
-                .sorted(Comparator.comparing(Product::getName))
-                .forEach(System.out::println);
-
-        compareByRate(categories);
-        // можно ли сделать так, чтоб для всех параметров подходило, так сказать, перегрузить?
+        System.out.println(getSortedCategories(categories, comparing(Product::getName).reversed()));
+        System.out.println(getSortedCategories(categories, comparing(Product::getPrice)));
+        System.out.println(getSortedCategories(categories, comparing(Product::getRate)));
     }
 
-    private static void compareByRate(List<Category> categories) {
-        categories.stream()
+    private static List<Product> getSortedCategories(List<Category> categories, Comparator<Product> categoryComparator) {
+        return categories.stream()
                 .flatMap(category -> category.getProducts().stream())
-                .sorted(Comparator.comparing(Product::getRate))
-                // .sorted(Comparator.comparing(Product::getPrice)) // eсли в таком порядке написать,сортирует по цене
-                // .sorted(Comparator.comparing(Product::getName))
-                .forEach(System.out::println);
+                .sorted(categoryComparator)
+                .toList();
     }
 }

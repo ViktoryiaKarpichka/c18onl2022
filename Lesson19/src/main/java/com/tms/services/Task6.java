@@ -8,8 +8,10 @@ import com.tms.models.Reader;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
 
 public class Task6 {
+    private static final Random random = new Random();
     public static void main(String[] args) {
         // * 6) Пишем библиотеку.
         //     * Задачи со ЗВЕЗДОЧКОЙ:
@@ -45,15 +47,16 @@ public class Task6 {
                 new Reader("Дрозд В.А.", "drozd@gmail.com", true),
                 new Reader("Иванова Л.М.", "ivanova@gmail.com", false),
                 new Reader("Сидор Н.Я.", "sidor@gmail.com", true));
-        readers.get(0).setBooks(Arrays.asList(books.get(1)));
-        readers.get(1).setBooks(Arrays.asList(books.get(2), books.get(3)));
-        readers.get(2).setBooks(Arrays.asList(books.get(4)));
-        readers.get(3).setBooks(Arrays.asList(books.get(4), books.get(8)));
-        // может можно через стрим сделать? у меня только так получилось
-        // readers.stream()
-        //                .peek(reader -> reader.setBooks(Arrays.asList(books.get(1))))
-        //                       .forEach(System.out::println);
-
+        //readers.get(0).setBooks(Arrays.asList(books.get(1)));
+        //        readers.get(1).setBooks(Arrays.asList(books.get(2), books.get(3)));
+        //        readers.get(2).setBooks(Arrays.asList(books.get(4)));
+        //        readers.get(3).setBooks(Arrays.asList(books.get(4), books.get(8)));
+        readers.stream()
+                .peek(reader -> reader.setBooks(Arrays.asList(
+                        books.get(random.nextInt(books.size() - 1)))))
+                .forEach(System.out::println);
+        //не понимаю, как сделать так, чтобы рандомно количество книг задать
+        //так просто рандомно одну книгу выбирает из коллекции
 
         Library library = new Library(books, readers);
 
@@ -74,7 +77,7 @@ public class Task6 {
                 .filter(Reader::isSubscriber)
                 .filter(reader -> reader.getBooks().size() > 1)
                 .map(Reader::getEmail)
-                .map(EmailAddress::new) //???? выводит 2 адреса,но параметры null
+                .map(EmailAddress::new)
                 .toList();
         System.out.println(emailAddressBySubscribe);
 
@@ -97,6 +100,5 @@ public class Task6 {
                 .map(reader -> reader.getBooks().size())
                 .reduce(Integer.MIN_VALUE, Integer::max);
         System.out.println(maxBooksReader);
-
     }
 }

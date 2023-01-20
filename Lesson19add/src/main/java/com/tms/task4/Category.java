@@ -14,5 +14,4 @@ import java.util.Set;
 public class Category {
         private String name;
         private Set<Product> products;
-
 }
