@@ -14,6 +14,7 @@ public class EmailAddress {
     private String someDate;
 
     public EmailAddress(String email) {
+        this.email = email;
     }
 }
 

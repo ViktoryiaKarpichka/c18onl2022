@@ -5,6 +5,7 @@ import com.tms.models.Person;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class Task5 {
     public static void main(String[] args) {
@@ -25,23 +26,23 @@ public class Task5 {
         people.add(new Person("Nikolaj", "Sidorov"));
         people.add(new Person("Anna", "Dubrova"));
         people.add(new Person("Nina", "Antonova"));
-        System.out.println(getSurnameByStartWithD(people));
-        // System.out.println(getCountSurnameByFirstLetter(people));
+        System.out.println(getSurnameByFirstLetter(people, "D"));
+        getCountSurnameByFirstLetter(people);
     }
 
-    public static Optional<String> getSurnameByStartWithD(List<Person> people) {
+    public static Optional<String> getSurnameByFirstLetter(List<Person> people, String letter) {
         return people.stream()
                 .map(Person::getSurname)
-                .filter(surname -> surname.startsWith("D"))
-                .reduce((a, b) -> a + "," + b);
-        // .reduce(String::concat);   так красивее,но без запятой выводит
+                .filter(surname -> surname.startsWith(letter))
+                .collect(Collectors.joining(", ")).describeConstable();
+        //    .reduce((a, b) -> a + "," + b);
+        // .reduce(String::concat);
     }
-    //здесь вокруг да около
-    // public static Map<Character,Integer> getCountSurnameByFirstLetter(List<Person> people) {
-    //        Map<Integer, List<String>> map1 = Stream.of(people)
-    //                .collect(Collectors.groupingBy(surname->surname.charAt(0),Collectors.counting()));
-    //                map1.entrySet().forEach(System.out::println);
-    //                       // Collectors.joining(" - ");
-    //        return new HashMap<>();
-    //    }
+
+    public static void getCountSurnameByFirstLetter(List<Person> people) {
+        people.stream()
+                .map(Person::getSurname)
+                .collect(Collectors.groupingBy(surname -> surname.charAt(0), Collectors.counting()))
+                .forEach((k, v) -> System.out.println(k + " - " + v));
+    }
 }

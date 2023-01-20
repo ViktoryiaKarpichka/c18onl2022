@@ -22,16 +22,19 @@ public class Task3 {
     }
 
     private static void printEntrySet(Map<String, Toy> toys) {
-        System.out.println(toys.entrySet());
+        toys.forEach((k, v) -> System.out.println(k + ":" + v));
     }
 
     private static void printValues(Map<String, Toy> toys) {
-        System.out.println(toys.values());
+        toys.values().forEach(v -> System.out.println("values: " + v));
     }
 
     private static void printKey(Map<String, Toy> toys) {
-        System.out.println(toys.keySet());
+        toys.keySet().forEach(k -> System.out.println("key: " + k));
     }
+    // private static void printKey(Map<String, Toy> toys) {
+    //        System.out.println(toys.keySet());
+    //    }
     // toys.keySet().stream()
     //              .forEach(System.out::println);
     //      toys.values().stream()

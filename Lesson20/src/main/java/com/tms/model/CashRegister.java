@@ -7,6 +7,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class CashRegister extends Thread {
+public class CashRegister {
     private int countCashRegister;
+    private Integer queueSize;
+
+    public void serveCustomer(Customer customer) {
+
+    }
 }
