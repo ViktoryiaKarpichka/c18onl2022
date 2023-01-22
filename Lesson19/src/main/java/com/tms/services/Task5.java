@@ -27,19 +27,20 @@ public class Task5 {
         people.add(new Person("Anna", "Dubrova"));
         people.add(new Person("Nina", "Antonova"));
         System.out.println(getSurnameByFirstLetter(people, "D"));
-        getCountSurnameByFirstLetter(people);
+        printCountSurnameByFirstLetter(people);
     }
 
     public static Optional<String> getSurnameByFirstLetter(List<Person> people, String letter) {
         return people.stream()
                 .map(Person::getSurname)
                 .filter(surname -> surname.startsWith(letter))
-                .collect(Collectors.joining(", ")).describeConstable();
+                .collect(Collectors.joining(", "))
+                .describeConstable();
         //    .reduce((a, b) -> a + "," + b);
         // .reduce(String::concat);
     }
 
-    public static void getCountSurnameByFirstLetter(List<Person> people) {
+    public static void printCountSurnameByFirstLetter(List<Person> people) {
         people.stream()
                 .map(Person::getSurname)
                 .collect(Collectors.groupingBy(surname -> surname.charAt(0), Collectors.counting()))

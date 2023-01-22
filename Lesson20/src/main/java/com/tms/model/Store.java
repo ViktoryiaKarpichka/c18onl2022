@@ -11,4 +11,6 @@ public class Store {
     private CashRegister cashRegister;
     private Customer customer;
     private boolean isFree;
+
+
 }

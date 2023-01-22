@@ -56,7 +56,8 @@ public class Task6 {
                         books.get(random.nextInt(books.size() - 1)))))
                 .forEach(System.out::println);
         //не понимаю, как сделать так, чтобы рандомно количество книг задать
-        //так просто рандомно одну книгу выбирает из коллекции
+        //так и не разобралась
+        //new Random().ints(5,0,11).toArray()
 
         Library library = new Library(books, readers);
 
@@ -101,4 +102,5 @@ public class Task6 {
                 .reduce(Integer.MIN_VALUE, Integer::max);
         System.out.println(maxBooksReader);
     }
+
 }
