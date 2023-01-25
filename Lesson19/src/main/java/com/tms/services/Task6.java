@@ -5,27 +5,27 @@ import com.tms.models.EmailAddress;
 import com.tms.models.Library;
 import com.tms.models.Reader;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.*;
 
 public class Task6 {
     private static final Random random = new Random();
+
+    private static List<Book> getRandomReaderBooks(Library library) {
+        int randomBooksForReader = random.nextInt(library.getBooks().size() - 1);
+        int[] randomIndexes =
+                random.ints(randomBooksForReader, 0, library.getBooks().size() - 1).toArray();
+        List<Book> result = new ArrayList<>();
+        for (int randomIndex : randomIndexes) {
+            result.add(library.getBooks().get(randomIndex));
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         // * 6) Пишем библиотеку.
-        //     * Задачи со ЗВЕЗДОЧКОЙ:
-        //     * b) Необходимо рассылать разные тексты двум группам:
-        //     * * тем, у кого взято меньше двух книг, просто расскажем о новинках библиотеки;
-        //     * * тем, у кого две книги и больше, напомним о том, что их нужно вернуть в срок.
-        //     * То есть надо написать метод, который вернёт два списка адресов (типа EmailAddress): с пометкой OK — если книг не больше двух,
-        //     * или TOO_MUCH — если их две и больше. Порядок групп не важен.
-        //     * с) Для каждой группы (OK, TOO_MUCH) получить списки читателей в каждой группе.
-        //     * d) Для каждой группы (OK, TOO_MUCH) получить ФИО читателей в каждой группе, перечисленные через запятую.
-        //     * И ещё каждый такой список ФИО нужно обернуть фигурными скобками.
-        //     * Пример: TOO_MUCH {Иванов Иван Иванович, Васильев Василий Васильевич}
-        //     * OK {Семёнов Семён Семёнович}
-        //     */
         List<Book> books = Arrays.asList(
                 new Book("Лев Толстой", "Смерть Ивана Ильича", 1886),
                 new Book("Фёдор Михайлович Достоевский", "Преступление и наказание", 1886),
@@ -51,16 +51,12 @@ public class Task6 {
         //        readers.get(1).setBooks(Arrays.asList(books.get(2), books.get(3)));
         //        readers.get(2).setBooks(Arrays.asList(books.get(4)));
         //        readers.get(3).setBooks(Arrays.asList(books.get(4), books.get(8)));
-        readers.stream()
-                .peek(reader -> reader.setBooks(Arrays.asList(
-                        books.get(random.nextInt(books.size() - 1)))))
-                .forEach(System.out::println);
-        //не понимаю, как сделать так, чтобы рандомно количество книг задать
-        //так и не разобралась
-        //new Random().ints(5,0,11).toArray()
 
         Library library = new Library(books, readers);
 
+        readers.stream()
+                .peek(reader -> reader.setBooks(getRandomReaderBooks(library)))
+                .forEach(System.out::println);
         //     * a) Получить список всех книг библиотеки, отсортированных по году издания.
         books.stream()
                 .sorted(Comparator.comparing(Book::getIssueYear))
@@ -101,6 +97,39 @@ public class Task6 {
                 .map(reader -> reader.getBooks().size())
                 .reduce(Integer.MIN_VALUE, Integer::max);
         System.out.println(maxBooksReader);
-    }
 
+        //* b) Необходимо рассылать разные тексты двум группам:
+        //     * тем, у кого взято меньше двух книг, просто расскажем о новинках библиотеки;
+        //     * * тем, у кого две книги и больше, напомним о том, что их нужно вернуть в срок.
+        //     * То есть надо написать метод, который вернёт два списка адресов (типа EmailAddress): с пометкой OK — если книг не больше двух,
+        //     * или TOO_MUCH — если их две и больше. Порядок групп не важен.
+        Map<String, List<EmailAddress>> map = library.getReaders().stream()
+                .filter(Reader::isSubscriber)
+                .collect(Collectors.groupingBy(reader -> reader.getBooks().size() > 2 ? "TOO_MUCH" : "OK",
+                        Collectors.mapping(reader -> new EmailAddress(reader.getEmail()), Collectors.toList())));
+        for (Map.Entry<String, List<EmailAddress>> entry : map.entrySet()) {
+            String emails = entry.getValue().stream()
+                    .map(EmailAddress::getEmail)
+                    .collect(joining(","));
+            System.out.println(entry.getKey() + " - " + emails);
+        }
+        map.values().stream()
+                .flatMap(Collection::stream)
+                .map(EmailAddress::getEmail)
+                .forEach(System.out::println);
+
+        // * с)Если нужны не адреса, а просто списки читателей в каждой группе:
+        Map<String, List<Reader>> readerstMap = library.getReaders().stream()
+                .filter(Reader::isSubscriber)
+                .collect(groupingBy(r -> r.getBooks().size() > 2 ? "TOO_MUCH" : "OK"));
+        //* d) Если для каждой группы нужны ФИО читателей из этой группы, перечисленные через запятую. И ещё каждый такой список ФИО нужно обернуть фигурными скобками.
+        {
+            Map<String, String> readersFIOMap = library.getReaders().stream()
+                    .filter(Reader::isSubscriber)
+                    .collect(groupingBy(r -> r.getBooks().size() > 2 ? "TOO_MUCH" : "OK",
+                            mapping(Reader::getFio, joining(", ", "{", "}"))));
+            String readersFios = readersFIOMap.get("OK");
+            System.out.println(readersFios);
+        }
+    }
 }
