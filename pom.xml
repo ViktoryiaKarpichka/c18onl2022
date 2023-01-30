@@ -10,8 +10,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>16</maven.compiler.source>
-        <maven.compiler.target>16</maven.compiler.target>
+        <maven.compiler.source>19</maven.compiler.source>
+        <maven.compiler.target>19</maven.compiler.target>
         <junit.jupiter.version>5.9.1</junit.jupiter.version>
         <junit.platform.version>1.9.1</junit.platform.version>
     </properties>
@@ -53,6 +53,7 @@
             <artifactId>postgresql</artifactId>
             <version>42.5.1</version>
         </dependency>
+
     </dependencies>
 
 
@@ -79,5 +80,9 @@
         <module>Lesson20</module>
         <module>Lesson19add</module>
         <module>Lesson21</module>
+        <module>Lesson24web</module>
+        <module>Lesson23web</module>
+
+
     </modules>
 </project>
