@@ -10,10 +10,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class City {
-    private String nameCity;
-    private long id;
+    private Long id;
+    private String name;
 
-    public City(String nameCity) {
-        this.nameCity = nameCity;
-    }
 }
