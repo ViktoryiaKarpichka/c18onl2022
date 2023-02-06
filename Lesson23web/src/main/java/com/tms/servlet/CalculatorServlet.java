@@ -9,8 +9,6 @@ import java.io.PrintWriter;
 
 import static com.tms.utils.Calculator.*;
 
-//честно говоря,понимание еще не пришло
-// можно ли как-то сделать через forward, a не writer?
 @WebServlet("/calculator")
 public class CalculatorServlet extends HttpServlet {
     @Override

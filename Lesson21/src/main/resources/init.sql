@@ -1,25 +1,18 @@
---------------------------------------------------------
---  DDL for Table students
---------------------------------------------------------
 DROP TABLE IF EXISTS students;
-CREATE TABLE IF NOT EXISTS students
+create table students
 (
-    id
-    serial
-    primary
-    key,
-    name
-    VARCHAR
-(
-    45
-) NOT NULL,
-    surname VARCHAR
-(
-    100
-) NOT NULL,
-    course INT NOT NULL,
+    id      serial
+        primary key,
+    name    varchar(45)  not null,
+    surname varchar(100) not null,
+    course  integer      not null,
     city_id bigint
-    );
+        constraint students_city_id_fk
+            references city
+);
+
+alter table students
+    owner to postgres;
 
 INSERT INTO students(name, surname, course, city_id)
 VALUES ('Alex', 'Surkov', 1, 1);
@@ -36,18 +29,16 @@ VALUES ('Petr', 'Medvedzev', 5, 5);
 --select * from students where course>1;
 --alter table students  add city varchar(50);
 DROP TABLE IF EXISTS city;
-CREATE TABLE IF NOT EXISTS city
+create table city
 (
-    id
-    serial
-    primary
-    key,
-    name
-    VARCHAR
-(
-    45
-) NOT NULL
-    );
+    id   serial
+        primary key,
+    name varchar(45) not null
+);
+
+alter table city
+    owner to postgres;
+
 insert into city
 values (1, 'Minsk');
 insert into city
