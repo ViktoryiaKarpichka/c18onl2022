@@ -19,7 +19,7 @@
                 .stream()
                 .forEach(student -> writer.println("<tr><td>" + student.getName() + "</td></tr>"));
     %>
-    <% for (Student student : (List<Student>) request.getAttribute("users")) {%>
+    <% for (Student student : (List<Student>) request.getAttribute("students")) {%>
     <tr>
         <td>
             <%=student.getName()%>
