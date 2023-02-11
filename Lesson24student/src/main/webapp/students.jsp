@@ -1,32 +1,24 @@
-<%@ page import="com.tms.model.Student" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.io.PrintWriter" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <meta charset="utf-8">
+    <title>Table of Students</title>
 </head>
 <body>
 <h1>Student</h1>
-<table>
+<table border="1">
+    <caption>Table of Students</caption>
     <tr>
         <th>Name</th>
+        <th>Surname</th>
+        <th>Course</th>
     </tr>
-    <tbody>
-    <%
-        PrintWriter writer = response.getWriter();
-        ((List<Student>) request.getAttribute("students"))
-                .stream()
-                .forEach(student -> writer.println("<tr><td>" + student.getName() + "</td></tr>"));
-    %>
-    <% for (Student student : (List<Student>) request.getAttribute("students")) {%>
-    <tr>
-        <td>
-            <%=student.getName()%>
-        </td>
-    </tr>
-    <%} %>
-    </tbody>
+    <c:forEach var="student" items="${students}">
+        <tr>
+            <td>${student.name}</td>
+            <td>${student.surname}</td>
+            <td>${student.course}</td>
+        </tr>
+    </c:forEach>
 </table>
 </body>
 </html>
