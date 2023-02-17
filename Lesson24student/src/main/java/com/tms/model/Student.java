@@ -8,12 +8,14 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class Student {
-
+    private Long id;
     private String surname;
     private String name;
     private String course;
 
-    public Student(String name) {
+    public Student(String surname, String name, String course) {
+        this.surname = surname;
         this.name = name;
+        this.course = course;
     }
 }
