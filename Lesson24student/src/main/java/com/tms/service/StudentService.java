@@ -12,10 +12,15 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
-
     public List<Student> findStudents() {
-        System.out.println("6");
         return studentRepository.findStudents();
     }
 
+    public void addStudent(Student student) {
+        studentRepository.addStudent(student);
+    }
+
+    void deleteStudent(Long id) {
+        studentRepository.deleteStudent(id);
+    }
 }

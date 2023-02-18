@@ -19,7 +19,6 @@ public class StudentServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        System.out.println("7");
         studentService = (StudentService) config.getServletContext().getAttribute("studentService");
     }
 
@@ -28,10 +27,8 @@ public class StudentServlet extends HttpServlet {
             HttpServletRequest req,
             HttpServletResponse resp
     ) throws IOException, ServletException {
-        System.out.println("8");
         List<Student> students = studentService.findStudents();
         req.setAttribute("students", students);
-
         getServletContext().getRequestDispatcher("/students.jsp").forward(req, resp);
     }
 }

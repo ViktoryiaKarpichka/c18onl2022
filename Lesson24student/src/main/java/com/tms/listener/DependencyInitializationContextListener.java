@@ -20,7 +20,6 @@ public class DependencyInitializationContextListener implements ServletContextLi
         String username = sce.getServletContext().getInitParameter("db_user");
         String password = sce.getServletContext().getInitParameter("db_password");
         String dbUrl = sce.getServletContext().getInitParameter("db_url");
-        System.out.println("1");
         try {
             Class.forName(dbDriver);
             Connection connection = DriverManager.getConnection(dbUrl, username, password);
@@ -28,7 +27,6 @@ public class DependencyInitializationContextListener implements ServletContextLi
             StudentService studentService = new StudentService(repository);
             sce.getServletContext().setAttribute("studentService", studentService);
             sce.getServletContext().setAttribute("connection", connection);
-            System.out.println("2");
         } catch (Exception e) {
             System.out.println("SQLException" + e.getMessage());
             throw new RuntimeException(e);
@@ -38,7 +36,6 @@ public class DependencyInitializationContextListener implements ServletContextLi
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         try {
-            System.out.println("3");
             final Connection connection = (Connection) sce.getServletContext().getAttribute("connection");
             connection.close();
         } catch (SQLException e) {
