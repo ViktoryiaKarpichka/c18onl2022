@@ -23,6 +23,9 @@
             <td class="trans">${student.course}</td>
         </tr>
     </c:forEach>
+    <form action="/index.jsp" target="_blank">
+        <button>main page</button>
+    </form>
 </table>
 </body>
 </html>

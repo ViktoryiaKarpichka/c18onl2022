@@ -1,0 +1,20 @@
+body {
+    font-family: "Times New Roman", sans-serif;
+    font-size: 12pt;
+    background-color: #ecb5e3;
+    color: #090909;
+}
+
+h1 {
+    color: #8c23ee;
+    font-size: 24pt;
+    font-family: Georgia, Times, serif;
+    font-weight: lighter;
+    text-align: center;
+}
+
+form {
+    color: fuchsia;
+    text-align: center;
+}
+

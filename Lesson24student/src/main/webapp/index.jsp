@@ -5,6 +5,8 @@
     <title>Index Page</title>
 </head>
 <body>
-<jsp:forward page="/students"/>
+<a href="/students">Get all students</a><br>
+<a href="/add-student.jsp">Add student</a><br>
+<a href="/delete-student.jsp">Delete student</a>
 </body>
 </html>
