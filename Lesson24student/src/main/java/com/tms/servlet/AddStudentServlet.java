@@ -5,15 +5,14 @@ import com.tms.service.StudentService;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@WebServlet("/add")
 public class AddStudentServlet extends HttpServlet {
-    //табличка выводится, но добавить студентов не могу понять как
-    //создала сервлет,а куда что передавать что-то не приходит в голову
-    // и что в фильтрах сделать
 
     private StudentService studentService;
 
@@ -24,11 +23,21 @@ public class AddStudentServlet extends HttpServlet {
     }
 
     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doGet(req, resp);
+    }
+
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("name");
-        String surname = req.getParameter("surname");
-        String course = req.getParameter("course");
-        studentService.addStudent(new Student(name, surname, course));
-        resp.sendRedirect("/add-student.jsp");
+        try {
+            String name = req.getParameter("name");
+            String surname = req.getParameter("surname");
+            Integer course = Integer.valueOf(req.getParameter("course"));
+            studentService.addStudent(new Student(name, surname, course));
+            resp.sendRedirect("/students");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
+

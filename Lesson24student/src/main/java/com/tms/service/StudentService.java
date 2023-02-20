@@ -20,7 +20,7 @@ public class StudentService {
         studentRepository.addStudent(student);
     }
 
-    void deleteStudent(Long id) {
+    public void deleteStudent(Long id) {
         studentRepository.deleteStudent(id);
     }
 }

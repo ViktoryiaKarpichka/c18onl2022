@@ -24,7 +24,7 @@ public class JdbcStudentRepository implements StudentRepository {
             ResultSet rs = statement.executeQuery(sql);
             final List<Student> students = new ArrayList<>();
             while (rs.next()) {
-                final Student student = new Student(rs.getString("name"), rs.getString("surname"), rs.getString("course"));
+                final Student student = new Student(rs.getString("name"), rs.getString("surname"), rs.getInt("course"));
                 students.add(student);
             }
             return students;
@@ -40,7 +40,7 @@ public class JdbcStudentRepository implements StudentRepository {
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_STUDENT_QUERY);
             preparedStatement.setString(1, student.getName());
             preparedStatement.setString(2, student.getSurname());
-            preparedStatement.setString(3, student.getCourse());
+            preparedStatement.setInt(3, student.getCourse());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Exception" + e.getMessage());
