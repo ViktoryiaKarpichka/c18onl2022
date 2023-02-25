@@ -90,5 +90,7 @@
         <module>Lesson24student</module>
         <module>Lesson25filter</module>
         <module>Lesson26web</module>
+        <module>Lesson27product</module>
+        <module>Lesson28</module>
     </modules>
 </project>
