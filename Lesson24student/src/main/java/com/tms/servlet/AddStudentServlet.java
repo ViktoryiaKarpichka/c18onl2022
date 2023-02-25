@@ -22,10 +22,6 @@ public class AddStudentServlet extends HttpServlet {
         studentService = (StudentService) config.getServletContext().getAttribute("studentService");
     }
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
-    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
