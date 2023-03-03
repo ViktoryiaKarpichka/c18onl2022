@@ -1,27 +1,25 @@
 package com.tms.service;
 
 import com.tms.model.Product;
-import com.tms.model.ProductAware;
+import com.tms.repository.ProductRepository;
+import lombok.AllArgsConstructor;
 
-import java.util.Arrays;
 import java.util.List;
 
-public class ProductService implements ProductAware {
+@AllArgsConstructor
+public class ProductService {
 
-    private List<Product> products;
+    private final ProductRepository productRepository;
 
-    public ProductService(List<Product> productsList) {
-        this.products = productsList;
+    public List<Product> getProducts() {
+        return productRepository.getProducts();
     }
 
-    @Override
-    public List<Product> createProductsList() {
-        return products = Arrays.asList(
-                new Product("phones.jsp"),
-                new Product("laptops.jsp"),
-                new Product("jpsNavs.jsp"),
-                new Product("fridges.jsp"),
-                new Product("cars.jsp"),
-                new Product("cameras.jsp"));
+    public Product getProductById(int id) {
+        return productRepository.getProductById(id);
+    }
+
+    public List<Product> getProductsByCategoryId(int categoryId) {
+        return productRepository.getProductsByCategoryId(categoryId);
     }
 }

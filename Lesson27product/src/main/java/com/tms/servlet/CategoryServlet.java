@@ -16,8 +16,8 @@ import java.util.List;
 
 import static com.tms.utils.Utils.isUserLogIn;
 
-@WebServlet("/product")
-public class ProductServlet extends HttpServlet {
+@WebServlet("/category")
+public class CategoryServlet extends HttpServlet {
     private ProductService productService;
 
     @Override
@@ -29,17 +29,16 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute("username");
-        //Хотела уточнить,в каждом сервлете мы из сессии получаем юзера...это типа если мы закрыли страничку (т е сессия закончилась)и вернувшись на страницу снова вводили логин и пароль?
         if (isUserLogIn(user)) {
-            List<Product> products = productService.getProducts();
-            req.getSession().setAttribute("products", products);
-            int productId = Integer.parseInt(req.getParameter("productId"));
-            Product product = productService.getProductById(productId);
-            req.setAttribute("oneProduct", product);
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("product.jsp");
+            int categoryId = Integer.parseInt(req.getParameter("categoryId"));
+            String nameCategory = req.getParameter("nameCategory");
+            List<Product> categoryProducts = productService.getProductsByCategoryId(categoryId);
+            req.setAttribute("products", categoryProducts);
+            req.setAttribute("nameCategory", nameCategory);
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/category.jsp");
             requestDispatcher.forward(req, resp);
         } else {
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/signin.gsp");
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/signin.jsp");
             requestDispatcher.forward(req, resp);
         }
     }

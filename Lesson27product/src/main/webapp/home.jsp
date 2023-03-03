@@ -4,16 +4,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <header style="width: 100%; background-color: darkolivegreen">
-        <nav class="nav">
-            <a class="nav-link active;" href="home.jsp">Main <i class="fas fa-home"></i></a>
-            <a class="nav-link active" href="#">User <i class="fas fa-user"></i></a>
-            <a class="nav-link active" href="#">Cart <i class="fas fa-shopping-cart"></i></a>
-        </nav>
-    </header>
     <title>Categories</title>
     <meta charset="utf-8">
     <%--Данная строка необходима для того, чтобы ширина устройства, на котором открывается страница,
@@ -31,8 +21,8 @@
 </head>
 <body>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-<c:set var="categories" value="${sessionScope.get('categories')}"/>
-<c:set var="products" value="${sessionScope.get('products')}"/>
+<jsp:include page="header.jsp"/>
+<br>
 <h2>Popular categories</h2>
 <div class="container-fluid">
     <c:if test="${not empty categories}">
@@ -42,11 +32,11 @@
                 m-1 означает внешинй отступ (margin) со всех 4 сторон. Измеряется специальной переменной $spacer(по умолчанию - 1rem (16px).
                 1 = $spacer * .25 = 16 * 0.25 = 4px--%>
                 <div class="card w-25 m-1" type="category">
-                    <div class="card-body">
-                        <a href="phones.jsp">
-                            <h6 class="card-title">${category.getImageName()}</h6></a>
-                        <img class="card-img" style="width:100px;height:60px"
-                             src="${contextPath}/images/${category.getName()}" alt="Card image">
+                    <div class="card-body" style="text-align: center">
+                            ${category.getName()}<br>
+                        <a href="${contextPath}/category?categoryId=${category.getId()}&amp;categoryName=${category.getName()}">
+                            <img class="card-img" style="width:150px;height:120px"
+                                 src="${contextPath}/images/${category.getImageName()}" alt="Card image"></a>
                     </div>
                 </div>
             </c:forEach>
