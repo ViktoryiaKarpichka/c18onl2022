@@ -1,11 +1,17 @@
 package com.tms.servlet;
 
+import static com.tms.utils.HttpRequestParamValidator.validateParamNotNull;
+import static com.tms.utils.Utils.ADMIN_LOGIN;
+import static com.tms.utils.Utils.ADMIN_PASSWORD;
+import static com.tms.utils.Utils.isUserLogIn;
+
 import com.tms.exeptions.RequestParamNullException;
 import com.tms.model.Cart;
 import com.tms.model.Category;
 import com.tms.model.User;
 import com.tms.service.CategoryService;
-
+import java.io.IOException;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -13,11 +19,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.List;
-
-import static com.tms.utils.HttpRequestParamValidator.validateParamNotNull;
-import static com.tms.utils.Utils.*;
 
 @WebServlet("/home")
 public class HomeServlet extends HttpServlet {

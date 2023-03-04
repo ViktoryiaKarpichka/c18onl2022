@@ -1,9 +1,12 @@
 package com.tms.servlet;
 
+import static com.tms.utils.Utils.isUserLogIn;
+
 import com.tms.model.Cart;
 import com.tms.model.Product;
 import com.tms.model.User;
-
+import java.io.IOException;
+import java.math.BigDecimal;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,10 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.math.BigDecimal;
-
-import static com.tms.utils.Utils.isUserLogIn;
 
 @WebServlet("/cart")
 public class CartServlet extends HttpServlet {
@@ -40,9 +39,9 @@ public class CartServlet extends HttpServlet {
         String name = request.getParameter("name");
         String description = request.getParameter("description");
         String priceParameter = request.getParameter("price");
-        int category_id = Integer.parseInt(request.getParameter("categoryId"));
+        int categoryId = Integer.parseInt(request.getParameter("categoryId"));
         BigDecimal price = new BigDecimal(priceParameter);
-        Product product = new Product(id, imageName, name, description, price, category_id);
+        Product product = new Product(id, imageName, name, description, price, categoryId);
         String action = request.getParameter("action");
         switch (action) {
             case "Купить" -> {

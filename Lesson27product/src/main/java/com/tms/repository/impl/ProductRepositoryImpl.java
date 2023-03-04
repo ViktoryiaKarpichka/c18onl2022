@@ -1,14 +1,12 @@
 package com.tms.repository.impl;
 
-import com.tms.model.Product;
-import com.tms.repository.ProductRepository;
-
-import java.util.List;
-
 import static com.tms.utils.ProductHelper.products;
 
-public class ProductRepositoryImpl implements ProductRepository {
+import com.tms.model.Product;
+import com.tms.repository.ProductRepository;
+import java.util.List;
 
+public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public List<Product> getProducts() {
