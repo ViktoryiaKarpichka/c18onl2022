@@ -1,13 +1,16 @@
 package com.tms.servlet;
 
+import static com.tms.utils.Calculator.divide;
+import static com.tms.utils.Calculator.multiply;
+import static com.tms.utils.Calculator.subtraction;
+import static com.tms.utils.Calculator.sum;
+
+import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
-
-import static com.tms.utils.Calculator.*;
 
 @WebServlet("/calculator")
 public class CalculatorServlet extends HttpServlet {
@@ -42,7 +45,7 @@ public class CalculatorServlet extends HttpServlet {
 
     private Double getValueFromRequest(HttpServletRequest req, String parameterName) {
         if (parameterName == null) {
-            throw new IllegalStateException("parameter" + parameterName + "not set");
+            throw new IllegalStateException("parameter not set");
         }
         return Double.valueOf(req.getParameter(parameterName));
     }

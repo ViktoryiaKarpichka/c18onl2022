@@ -1,6 +1,5 @@
 package com.tms.utils;
 
-
 import com.tms.exeptions.RequestParamNullException;
 import lombok.experimental.UtilityClass;
 
