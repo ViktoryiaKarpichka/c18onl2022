@@ -4,13 +4,13 @@ import com.tms.repository.impl.CategoryRepositoryImpl;
 import com.tms.repository.impl.ProductRepositoryImpl;
 import com.tms.service.CategoryService;
 import com.tms.service.ProductService;
-
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
 @WebListener
 public class InitializationContextListener implements ServletContextListener {
+
     @Override
     public void contextInitialized(final ServletContextEvent sce) {
         ProductService productService = new ProductService(new ProductRepositoryImpl());

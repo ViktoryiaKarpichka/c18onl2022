@@ -1,11 +1,15 @@
 package by.tms2.services;
 
+import static by.tms2.model.Flower.getCount;
+import static by.tms2.utils.FlowerType.ASTER;
+import static by.tms2.utils.FlowerType.CARNATION;
+import static by.tms2.utils.FlowerType.HERBERA;
+import static by.tms2.utils.FlowerType.LILY;
+import static by.tms2.utils.FlowerType.ROSE;
+import static by.tms2.utils.FlowerType.TULIP;
+
 import by.tms2.model.Bouquet;
 import by.tms2.model.FlowerMarket;
-
-import static by.tms2.model.Flower.getCount;
-import static by.tms2.utils.FlowerType.*;
-
 
 public class Main {
 

@@ -80,10 +80,7 @@
                 <artifactId>spotbugs-maven-plugin</artifactId>
                 <version>${spotbugs.maven.plugin.version}</version>
                 <configuration>
-                    <effort>Max</effort>
-                    <threshold>Medium</threshold>
-                    <onlyAnalyze>com.-</onlyAnalyze>
-                    <maxHeap>1024</maxHeap>
+                    <excludeFilterFile>../codequality/spotbug-exclude.xml</excludeFilterFile>
                 </configuration>
                 <executions>
                     <execution>
@@ -103,7 +100,7 @@
                     <failOnViolation>false</failOnViolation>
                     <printFailingErrors>true</printFailingErrors>
                     <rulesets>
-                        <ruleset>codequality/pmd-rulesets.xml</ruleset>
+                        <ruleset>../codequality/pmd-rulesets.xml</ruleset>
                     </rulesets>
                     <targetJdk>${maven.compiler.target}</targetJdk>
                     <linkXRef>false</linkXRef>
@@ -155,7 +152,7 @@
                         </goals>
                         <configuration>
                             <configLocation>../codequality/checkstyle.xml</configLocation>
-                            <encoding>UTF-8</encoding>
+                            <inputEncoding>UTF-8</inputEncoding>
                             <consoleOutput>true</consoleOutput>
                             <failsOnError>true</failsOnError>
                         </configuration>
@@ -197,5 +194,7 @@
         <module>Lesson26web</module>
         <module>Lesson27product</module>
         <module>Lesson28</module>
+        <module>Lesson30</module>
+        <module>Lesson31</module>
     </modules>
 </project>

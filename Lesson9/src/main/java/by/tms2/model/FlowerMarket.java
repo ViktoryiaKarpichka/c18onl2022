@@ -2,9 +2,7 @@ package by.tms2.model;
 
 import by.tms2.utils.FlowerType;
 
-
 public class FlowerMarket {
-
 
     public Bouquet getBouquet(FlowerType... flowers) {
         Flower[] result = new Flower[flowers.length];

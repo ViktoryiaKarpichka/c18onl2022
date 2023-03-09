@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/home")
 public class HomeServlet extends HttpServlet {
+
     private CategoryService categoryService;
 
     @Override
@@ -40,13 +41,11 @@ public class HomeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String login = req.getParameter("username");
         String pass = req.getParameter("password");
-        User user;
-        Cart cart;
         try {
             validateParamNotNull(login);
             validateParamNotNull(pass);
-            user = new User(ADMIN_LOGIN, ADMIN_PASSWORD);
-            cart = new Cart();
+            User user = new User(ADMIN_LOGIN, ADMIN_PASSWORD);
+            Cart cart = new Cart();
             req.getSession().setAttribute("username", user);
             req.getSession().setAttribute("cart", cart);
             checkReceivedUser(user, req, resp);

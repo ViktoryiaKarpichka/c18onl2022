@@ -2,14 +2,13 @@ package com.tms.utils;
 
 import com.tms.model.Product;
 import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.List;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class ProductHelper {
 
-    public static final List<Product> products = Arrays.asList(
+    public static final List<Product> products = List.of(
             new Product(1, "apple.jpeg", "Смартфон Apple iPhone 13 128GB (темная ночь)", "Apple iOS, экран 6.1'' OLED (1170x2532), Apple A15 Bionic, ОЗУ 4 ГБ, флэш-память 128 ГБ, " + "камера 12 Мп, аккумулятор 3227 мАч, 1 SIM", new BigDecimal("2600"), 1),
             new Product(2, "samsung.jpeg", "Смартфон Samsung Galaxy A52 SM-A525F/DS 8GB/256GB (синий)", "Android, экран 6.5'' AMOLED (1080x2400), Qualcomm Snapdragon 720G, ОЗУ 8 ГБ, флэш-память 256 ГБ," + " карты памяти, камера 64 Мп, аккумулятор 4500 мАч, 2 SIM", new BigDecimal("1200"), 1),
             new Product(3, "laptopLenovo.jpeg", "Игровой ноутбук Lenovo Legion 5 15ACH6H 82JU00A1PB", "15.6'' 1920 x 1080 IPS, 120 Гц, несенсорный, AMD Ryzen 7 5800H 3200 МГц, 16 ГБ DDR4," + " SSD 512 ГБ, видеокарта NVIDIA GeForce RTX 3060 6 ГБ, Windows 10, цвет крышки темно-синий",

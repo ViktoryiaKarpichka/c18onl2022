@@ -1,5 +1,6 @@
 package com.tms.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -12,7 +13,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 @ToString
-public class Product {
+public class Product implements Serializable {
 
     private int id;
     private String imageName;

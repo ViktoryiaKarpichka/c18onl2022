@@ -1,12 +1,12 @@
 package com.tms.utils;
 
 import com.tms.model.User;
-import lombok.experimental.UtilityClass;
-
 import java.util.Optional;
+import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class Utils {
+
     public static final String ADMIN_LOGIN = "admin";
     public static final String ADMIN_PASSWORD = "admin";
 
