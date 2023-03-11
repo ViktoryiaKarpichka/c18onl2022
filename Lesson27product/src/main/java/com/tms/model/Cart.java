@@ -1,13 +1,15 @@
 package com.tms.model;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
 import lombok.Getter;
+import lombok.Setter;
 
+@Setter
 @Getter
-public class Cart {
+public class Cart implements Serializable {
 
-    private List<Product> products = new ArrayList<>();
+    private List<Product> products;
 
     public void addProduct(Product myProduct) {
         products.add(myProduct);
@@ -16,4 +18,5 @@ public class Cart {
     public void deleteProduct(Product myProduct) {
         products.remove(myProduct);
     }
+
 }

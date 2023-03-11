@@ -1,7 +1,11 @@
 package by.tms.model;
 
 import by.tms.utils.Seasons;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
@@ -14,7 +18,6 @@ public class Season {
     public String myFavouriteSeason() {
         return "My favourite season is " + seasons;
     }
-
 
     public void getLikeSeasons(Seasons season) {
         switch (seasons) {

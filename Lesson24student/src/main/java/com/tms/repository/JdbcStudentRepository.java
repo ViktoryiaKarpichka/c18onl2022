@@ -1,8 +1,11 @@
 package com.tms.repository;
 
 import com.tms.model.Student;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +13,6 @@ public class JdbcStudentRepository implements StudentRepository {
     private final Connection connection;
     private static final String INSERT_STUDENT_QUERY = "INSERT INTO students(name, surname, course) VALUES(?, ?, ?)";
     private static final String DELETE_STUDENT_QUERY = "DELETE FROM students WHERE id = ?";
-
 
     public JdbcStudentRepository(Connection connection) {
         this.connection = connection;

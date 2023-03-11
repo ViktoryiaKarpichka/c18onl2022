@@ -2,14 +2,13 @@ package com.tms.servlet;
 
 import com.tms.model.Student;
 import com.tms.service.StudentService;
-
+import java.io.IOException;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 @WebServlet("/add")
 public class AddStudentServlet extends HttpServlet {
@@ -21,7 +20,6 @@ public class AddStudentServlet extends HttpServlet {
         super.init(config);
         studentService = (StudentService) config.getServletContext().getAttribute("studentService");
     }
-
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

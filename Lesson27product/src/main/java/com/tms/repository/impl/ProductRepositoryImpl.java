@@ -16,15 +16,15 @@ public class ProductRepositoryImpl implements ProductRepository {
     @Override
     public Product getProductById(int id) {
         return products.stream()
-                .filter(product -> product.getId() == id)
-                .findFirst()
-                .orElse(null);
+                       .filter(product -> product.getId() == id)
+                       .findFirst()
+                       .orElse(null);
     }
 
     @Override
     public List<Product> getProductsByCategoryId(int categoryId) {
         return products.stream()
-                .filter(product -> product.getCategoryId() == categoryId)
-                .toList();
+                       .filter(product -> product.getCategoryId() == categoryId)
+                       .toList();
     }
 }
