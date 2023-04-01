@@ -4,44 +4,21 @@ import static com.tms.service.ApplicationConfiguration.Type.ELF;
 import static com.tms.service.ApplicationConfiguration.Type.HUMAN;
 import static com.tms.service.ApplicationConfiguration.Type.ORC;
 
-import com.tms.model.Archer;
 import com.tms.model.SoldierAbstractFactory;
-import com.tms.model.Warrior;
-import com.tms.model.Wizard;
+import java.util.Arrays;
+import java.util.List;
 
 public class AbstractFactoryApplication {
 
     public static void main(String[] args) {
         ApplicationConfiguration configuration = new ApplicationConfiguration();
-        SoldierAbstractFactory squadHuman = configuration.createSquad(HUMAN);
-        {
-            Warrior warrior = squadHuman.createWarrior();
-            warrior.act();
-            Wizard wizard = squadHuman.createWizard();
-            wizard.act();
-            Archer archer = squadHuman.createArcher();
-            archer.act();
+        List<SoldierAbstractFactory> squads = Arrays.asList(configuration.createSquad(HUMAN),
+                                                            configuration.createSquad(ORC),
+                                                            configuration.createSquad(ELF));
+        for (SoldierAbstractFactory factory : squads) {
+            factory.createWizard().act();
+            factory.createArcher().act();
+            factory.createWarrior().act();
         }
-
-        {
-            SoldierAbstractFactory squadOrc = configuration.createSquad(ORC);
-            Warrior warrior = squadOrc.createWarrior();
-            warrior.act();
-            Wizard wizard = squadOrc.createWizard();
-            wizard.act();
-            Archer archer = squadOrc.createArcher();
-            archer.act();
-        }
-
-        {
-            SoldierAbstractFactory squadElf = configuration.createSquad(ELF);
-            Warrior warrior = squadElf.createWarrior();
-            warrior.act();
-            Wizard wizard = squadElf.createWizard();
-            wizard.act();
-            Archer archer = squadElf.createArcher();
-            archer.act();
-        }
-
     }
 }
