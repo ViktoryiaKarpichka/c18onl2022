@@ -3,7 +3,7 @@ package com.tms.repository;
 import com.tms.model.Product;
 import java.util.List;
 
-public interface ProductRepository {
+public interface ProductRepository extends BaseRepository {
 
     List<Product> getProducts();
 

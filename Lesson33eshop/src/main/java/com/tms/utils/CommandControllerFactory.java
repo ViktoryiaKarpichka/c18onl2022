@@ -1,29 +1,50 @@
 package com.tms.utils;
 
 import com.tms.controller.BaseCommandController;
+import com.tms.controller.CartController;
+import com.tms.controller.CartPostController;
 import com.tms.controller.CategoryController;
 import com.tms.controller.HomeController;
-import com.tms.model.Commands;
-import com.tms.model.RequestParams;
+import com.tms.controller.LogoutController;
+import com.tms.controller.ProductController;
+import com.tms.controller.ProfileController;
+import com.tms.model.Command;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import javax.servlet.http.HttpServletRequest;
+import java.util.function.Supplier;
 
 public class CommandControllerFactory {
 
     private static final Map<String, BaseCommandController> COMMANDS = new ConcurrentHashMap<>();
 
-    static {
-        COMMANDS.put(Commands.HOME_PAGE_COMMAND.getCommand(), new HomeController());
-        COMMANDS.put(Commands.SIGN_IN_COMMAND.getCommand(), new CategoryController());
-
+    public static BaseCommandController defineCommand(Command command) throws Exception {
+        return putIfAbsent(command.getCommand(), createController(command));
     }
 
-    public static BaseCommandController defineCommand(HttpServletRequest request) {
-        String commandKey = request.getParameter(RequestParams.COMMAND.getValue());
-        if (commandKey == null || commandKey.isEmpty()) {
-            commandKey = Commands.SIGN_IN_COMMAND.getCommand();//registration categoryServlet
+    private static Supplier<BaseCommandController> createController(Command command) {
+        return switch (command) {
+            case LOGOUT_COMMAND -> LogoutController::new;
+            case PRODUCT_COMMAND -> ProductController::new;
+            case CATEGORY_COMMAND -> CategoryController::new;
+            case PROFILE_COMMAND -> ProfileController::new;
+            case SHOPPING_CART_POST_COMMAND -> CartPostController::new;
+            case CART_COMMAND -> CartController::new;
+            case HOME_COMMAND -> HomeController::new;
+        };
+    }
+
+    private static BaseCommandController putIfAbsent(String key, Supplier<BaseCommandController> supplier) throws Exception {
+        BaseCommandController value = COMMANDS.get(key);
+        if (value == null) {
+            value = create(supplier);
+            COMMANDS.put(key, value);
         }
-        return COMMANDS.get(commandKey);
+        return value;
+    }
+
+    private static BaseCommandController create(Supplier<BaseCommandController> supplier) throws Exception {
+        BaseCommandController baseController = supplier.get();
+        //createAndInjectInstanses(baseController);
+        return baseController;
     }
 }
