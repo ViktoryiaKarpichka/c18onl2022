@@ -5,22 +5,23 @@ import static com.tms.model.PagesPath.SIGN_IN_PAGE;
 import static com.tms.utils.Utils.isUserLogIn;
 
 import com.tms.model.Category;
+import com.tms.model.Inject;
 import com.tms.model.PagesPath;
 import com.tms.model.Product;
 import com.tms.model.User;
-import com.tms.repository.impl.CategoryRepositoryImpl;
-import com.tms.repository.impl.ProductRepositoryImpl;
-import com.tms.service.CategoryServiceImpl;
+import com.tms.service.CategoryService;
 import com.tms.service.ProductService;
-import com.tms.service.ProductServiceImpl;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import lombok.Setter;
 
+@Setter
 public class CategoryController implements BaseCommandController {
 
-    private final CategoryServiceImpl categoryService = new CategoryServiceImpl(new CategoryRepositoryImpl());
-
-    private final ProductService productService = new ProductServiceImpl(new ProductRepositoryImpl());
+    @Inject
+    private CategoryService categoryService; //= new CategoryServiceImpl(new CategoryRepositoryImpl());
+    @Inject
+    private ProductService productService; //= new ProductServiceImpl(new ProductRepositoryImpl());
 
     @Override
     public PagesPath execute(HttpServletRequest request) {

@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-lg-1" style="background-color:white;">
                 <a href="<c:url value="/eshop?command=product&productId=${product.getId()}"/>">
-                    <img src="${contextPath}/images/${product.getImageName()}" style="width:550px;height:500px"
+                    <img src="${contextPath}/images/${product.getImageName()}" style="height:auto; max-width: 400px;"
                          alt="${product.getImageName()}" class="responsive"></a></div>
             <div class="col" style="background-color:white;">
                 <p><b class="font-italic">Модель:</b> ${product.getName()}</p>

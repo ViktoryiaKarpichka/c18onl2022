@@ -10,16 +10,21 @@ import static com.tms.utils.Utils.isUserLogIn;
 import com.tms.exeptions.ValidationException;
 import com.tms.model.Cart;
 import com.tms.model.Category;
+import com.tms.model.Inject;
 import com.tms.model.PagesPath;
 import com.tms.model.User;
-import com.tms.repository.impl.CategoryRepositoryImpl;
-import com.tms.service.CategoryServiceImpl;
+import com.tms.service.CategoryService;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
+@Setter
+@Slf4j
 public class HomeController implements BaseCommandController {
 
-    private final CategoryServiceImpl categoryService = new CategoryServiceImpl(new CategoryRepositoryImpl());
+    @Inject
+    private CategoryService categoryService; //= new CategoryServiceImpl(new CategoryRepositoryImpl());
 
     @Override
     public PagesPath execute(HttpServletRequest request) {
@@ -38,7 +43,8 @@ public class HomeController implements BaseCommandController {
                 request.getSession().setAttribute("username", user);
                 return checkReceivedUser(user, request);
             } catch (ValidationException e) {
-                throw new RuntimeException(e);
+                log.error("invalid data", e);
+                throw new RuntimeException("invalid data");
             }
         }
     }

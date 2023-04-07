@@ -8,12 +8,14 @@ import com.tms.exeptions.CommandException;
 import com.tms.model.PagesPath;
 import com.tms.model.User;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 public class ProfileController implements BaseCommandController {
 
     @Override
     public PagesPath execute(HttpServletRequest request) throws CommandException {
-        User user = (User) request.getSession().getAttribute("username");
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("username");
         if (isUserLogIn(user)) {
             return PROFILE_PAGE;
         } else {

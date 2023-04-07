@@ -1,14 +1,16 @@
 package com.tms.service;
 
+import com.tms.model.Inject;
 import com.tms.model.Product;
 import com.tms.repository.ProductRepository;
 import java.util.List;
-import lombok.AllArgsConstructor;
+import lombok.Setter;
 
-@AllArgsConstructor
+@Setter
 public class ProductServiceImpl implements ProductService {
 
-    private final ProductRepository productRepository;
+    @Inject
+    private ProductRepository productRepository;
 
     public List<Product> getProducts() {
         return productRepository.getProducts();

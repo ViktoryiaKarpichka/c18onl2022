@@ -15,7 +15,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @WebServlet("/eshop")
 public class ApplicationServlet extends HttpServlet {
 
@@ -41,10 +43,10 @@ public class ApplicationServlet extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher(path.getPath());
             dispatcher.forward(request, response);
         } catch (CommandException e) {
-            //валидационная ошибка
+            log.error("non-validation error ", e);
             System.out.println(e.getMessage());
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            log.error("Exception ", e);
 //            логируем сообщение а потом должны перенаправить на страницу с ошибкой("Извините что-то поломалось!!!"),
             //           https://blog.hubspot.com/marketing/http-500-internal-server-error
 //            также можно конверсейшен в URL запроса поместить

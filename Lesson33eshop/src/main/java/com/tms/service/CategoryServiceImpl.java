@@ -1,14 +1,16 @@
 package com.tms.service;
 
 import com.tms.model.Category;
+import com.tms.model.Inject;
 import com.tms.repository.CategoryRepository;
 import java.util.List;
-import lombok.AllArgsConstructor;
+import lombok.Setter;
 
-@AllArgsConstructor
+@Setter
 public class CategoryServiceImpl implements CategoryService {
 
-    private final CategoryRepository categoryRepository;
+    @Inject
+    private CategoryRepository categoryRepository;
 
     public List<Category> getCategories() {
         return categoryRepository.getCategories();

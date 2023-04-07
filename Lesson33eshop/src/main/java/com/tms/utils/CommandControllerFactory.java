@@ -1,5 +1,7 @@
 package com.tms.utils;
 
+import static com.tms.utils.InjectObjectsFactory.createAndInjectInstances;
+
 import com.tms.controller.BaseCommandController;
 import com.tms.controller.CartController;
 import com.tms.controller.CartPostController;
@@ -12,7 +14,9 @@ import com.tms.model.Command;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Supplier;
+import lombok.experimental.UtilityClass;
 
+@UtilityClass
 public class CommandControllerFactory {
 
     private static final Map<String, BaseCommandController> COMMANDS = new ConcurrentHashMap<>();
@@ -44,7 +48,7 @@ public class CommandControllerFactory {
 
     private static BaseCommandController create(Supplier<BaseCommandController> supplier) throws Exception {
         BaseCommandController baseController = supplier.get();
-        //createAndInjectInstanses(baseController);
+        createAndInjectInstances(baseController);
         return baseController;
     }
 }

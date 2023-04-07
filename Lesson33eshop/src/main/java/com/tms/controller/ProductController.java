@@ -5,17 +5,20 @@ import static com.tms.model.PagesPath.SIGN_IN_PAGE;
 import static com.tms.utils.Utils.isUserLogIn;
 
 import com.tms.exeptions.CommandException;
+import com.tms.model.Inject;
 import com.tms.model.PagesPath;
 import com.tms.model.Product;
 import com.tms.model.User;
-import com.tms.repository.impl.ProductRepositoryImpl;
-import com.tms.service.ProductServiceImpl;
+import com.tms.service.ProductService;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import lombok.Setter;
 
+@Setter
 public class ProductController implements BaseCommandController {
 
-    private final ProductServiceImpl productService = new ProductServiceImpl(new ProductRepositoryImpl());
+    @Inject
+    private ProductService productService; // = new ProductServiceImpl(new ProductRepositoryImpl());
 
     @Override
     public PagesPath execute(HttpServletRequest request) throws CommandException {

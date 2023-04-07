@@ -2,18 +2,18 @@ package com.tms.repository.impl;
 
 import com.tms.model.Category;
 import com.tms.repository.CategoryRepository;
-import com.tms.repository.utils.ConnectionPool;
 import com.tms.repository.utils.ConnectionWrapper;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @AllArgsConstructor
+@Slf4j
 public class JdbcCategoryRepository implements CategoryRepository {
 
-    private ConnectionPool connectionPool;
 
     @Override
     public List<Category> getCategories() {
@@ -31,7 +31,7 @@ public class JdbcCategoryRepository implements CategoryRepository {
                                 .build());
             }
         } catch (Exception e) {
-            System.out.println("Exception: " + e.getMessage());
+            log.error("Exception ", e);
         }
         return categories;
     }
