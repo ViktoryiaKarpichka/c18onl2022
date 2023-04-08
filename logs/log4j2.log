@@ -1,0 +1,5 @@
+2023-04-05 14:57:03,076 INFO b.t.l.l.Order [main] Trying to add product to shopping cart...
+2023-04-05 14:57:03,077 WARN b.t.l.l.Order [main] Check product list is not empty before adding!
+2023-04-05 14:57:03,077 INFO b.t.l.l.Order [main] Product added to shopping cart
+2023-04-05 14:57:03,077 ERROR b.t.l.l.Order [main] Some error occurred after adding the product to shopping cart
+2023-04-05 14:57:03,077 INFO b.t.l.l.Order [main] Order created

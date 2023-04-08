@@ -15,6 +15,5 @@ public class MainChainOfResponsibility {
         reportNotifier.notifyManager("Everything is OK", ROUTINE);
         reportNotifier.notifyManager("Something went wrong!", IMPORTANT);
         reportNotifier.notifyManager("Houston, we've had a problem!!!", ASAP);
-
     }
 }

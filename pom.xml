@@ -65,6 +65,16 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.4.5</version>
+        </dependency>
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>7.3</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -198,5 +208,7 @@
         <module>Lesson31</module>
         <module>Lesson32patterns</module>
         <module>Lesson33eshop</module>
+        <module>Lesson34</module>
+        <module>Lesson35</module>
     </modules>
 </project>
