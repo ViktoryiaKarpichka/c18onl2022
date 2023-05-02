@@ -29,7 +29,7 @@ public class AuthController {
         return new ModelAndView(SIGN_IN_PAGE.getPath());
     }
 
-    @PostMapping()
+    @PostMapping
     public ModelAndView login(@Valid @ModelAttribute("user") User user, BindingResult bindingResult, ModelAndView modelAndView) throws AuthorizationException {
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName(SIGN_IN_PAGE.getPath());
