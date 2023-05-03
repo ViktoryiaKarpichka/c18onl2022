@@ -23,7 +23,11 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User findByEmailAndPassword(String email, String password) {
-        return users.stream().filter(user -> user.getEmail().equalsIgnoreCase(email)).filter(user -> user.getPassword().equalsIgnoreCase(password)).findAny().orElse(null);
+        return users.stream()
+                    .filter(user -> user.getEmail().equalsIgnoreCase(email))
+                    .filter(user -> user.getPassword().equalsIgnoreCase(password))
+                    .findAny()
+                    .orElse(null);
     }
 
 }

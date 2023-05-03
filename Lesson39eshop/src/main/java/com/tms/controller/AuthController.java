@@ -8,6 +8,7 @@ import com.tms.service.UserService;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,12 +30,16 @@ public class AuthController {
         return new ModelAndView(SIGN_IN_PAGE.getPath());
     }
 
+    //@ErrorView(value = "error", status = HttpStatus.FORBIDDEN)
     @PostMapping
-    public ModelAndView login(@Valid @ModelAttribute("user") User user, BindingResult bindingResult, ModelAndView modelAndView) throws AuthorizationException {
+    public ModelAndView login(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, ModelAndView modelAndView) throws AuthorizationException, AuthorizationException {
         if (bindingResult.hasErrors()) {
+            populateError("email", modelAndView, bindingResult);
+            populateError("password", modelAndView, bindingResult);
             modelAndView.setViewName(SIGN_IN_PAGE.getPath());
             return modelAndView;
         }
+
         return userService.authenticate(user);
     }
 
@@ -43,10 +48,10 @@ public class AuthController {
         return new User();
     }
 
-   /* private void populateError(String field, ModelAndView modelAndView, BindingResult bindingResult) {
-        if (bindingResult.hasFieldErrors(field)) {
-            modelAndView.addObject(field + "Error", Objects.requireNonNull(bindingResult.getFieldError(field))
-                                                           .getDefaultMessage());
+    private void populateError(String field, ModelAndView modelAndView, BindingResult bindingResult) {
+        FieldError fieldError = bindingResult.getFieldError(field);
+        if (fieldError != null) {
+            modelAndView.addObject(field + "Error", fieldError.getDefaultMessage());
         }
-    }*/
+    }
 }
