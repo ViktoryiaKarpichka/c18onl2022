@@ -11,22 +11,23 @@
 <jsp:include page="header.jsp"/>
 <jsp:include page="libs.jsp"/>
 <br>
-<h2>${nameCategory}</h2><br>
-<div class="container-fluid">
-    <c:if test="${not empty products}">
-    <c:forEach items="${products}" var="product">
-    <div class="row">
-        <div class="col-lg-1" style="background-color:white;">
-            <a href="${contextPath}/product/${product.getId()}">${product.getName()}"
-                <img src="${contextPath}/images/${product.getImageName()}" style="height:auto; max-width: 400px;"
-                     alt="${product.getImageName()}" class="responsive"></a></div>
-        <div class="col" style="background-color:white;">
-            <p><b class="font-italic">Модель:</b> ${product.getName()}</p>
-            <p><b class="font-italic">Описание:</b> ${product.getDescription()}</p>
-            <p><b class="font-italic">Цена:</b> ${product.getPrice()} руб.</p>
+<body>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<h2>${category.getName()}</h2>
+
+<div class="container-fluid mb-4">
+    <c:forEach items="${category.getProductList()}" var="product">
+        <div class="card w-25 m-1" type="product">
+            <div class="card-body">
+                <a href="${contextPath}/product/${product.getId()}">
+                    <img class="card-img" style="width:150px;height:120px"
+                         src="../images/${product.getImageName()}" alt="Card image"></a>
+                <h4 class="card-title">${product.getDescription()}</h4>
+                <h4 class="card-title">${product.getPrice()}</h4>
+            </div>
         </div>
-        </c:forEach>
-        </c:if>
-    </div>
+    </c:forEach>
+</div>
+
 </body>
 </html>

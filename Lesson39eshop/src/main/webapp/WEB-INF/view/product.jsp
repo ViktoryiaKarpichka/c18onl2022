@@ -3,7 +3,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
-<html>
 <head>
     <title>product</title>
     <jsp:include page="libs.jsp"/>
@@ -11,37 +10,42 @@
       function productAddedToShoppingCartMsg() {
         window.confirm("Продукт добавлен в корзину!");
       }
-
-      function productDeletedFromShoppingCartMsg() {
-        window.confirm("Продукт удален из корзины!");
-      }
     </script>
 </head>
 <body>
-<jsp:include page="header.jsp"/>
-<br>
-<h2>Product</h2><br>
-<<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-<h2>${product.getName()}</h2>
-
-<div class="container-fluid mb-4">
-    <div class="card w-25 m-1" type="product">
-        <div class="card-body">
-            <h4 class="card-title">${product.getName()}</h4>
-            <h4 class="card-title">${product.getDescription()}</h4>
-            <h4 class="card-title">${product.getPrice()}</h4>
-        </div>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<c:if test="${not empty product}">
+<div class="container-fluid">
+    <h2 class="text-center">${product.getName()}</h2><br>
+    <img class="mx-auto d-block" style="height:auto; max-width: 400px;"
+         src="${contextPath}/images/${product.getImageName()}"
+         alt="${product.getImageName()}">
+    <br>
+    <div class="container">
+        <h2>Информация о продукте:</h2>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th class="text-center" style="vertical-align: middle">Описание</th>
+                <th class="text-center" style="vertical-align: middle">Цена, руб.</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>${product.getDescription()}</td>
+                <td class="text-center" style="vertical-align: middle">${product.getPrice()}</td>
+            </tr>
+            </tbody>
+        </table>
+        </c:if>
     </div>
-</div>
-<a href="${contextPath}/cart/add?product_id=${product.getId()}">
-    <button id="addProductToCart" type="submit" onclick="productAddedToShoppingCartMsg()">Купить</button>
-</a>
+    <a href="${contextPath}/cart/add?product_id=${product.getId()}">
+        <button id="addProductToCart" type="submit" onclick="productAddedToShoppingCartMsg()">Купить</button>
+    </a>
 
-<a href="${contextPath}/cart/open">
-    <button id="cartRedirect" type="submit">Корзина</button>
-</a>
-<a href="${contextPath}/cart/delete?product_id=${product.getId()}">
-    <button id="deleteProductTFromCart" type="submit" onclick="productDeletedFromShoppingCartMsg()">Удалить</button>
-</a>
+    <a href="${contextPath}/cart/open">
+        <button id="cartRedirect" type="submit">Корзина</button>
+    </a>
+</div>
 </body>
 </html>

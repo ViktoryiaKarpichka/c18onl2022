@@ -30,18 +30,18 @@ public class AuthController {
         return new ModelAndView(SIGN_IN_PAGE.getPath());
     }
 
-    //@ErrorView(value = "error", status = HttpStatus.FORBIDDEN)
-    @PostMapping
-    public ModelAndView login(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, ModelAndView modelAndView) throws AuthorizationException, AuthorizationException {
-        if (bindingResult.hasErrors()) {
-            populateError("email", modelAndView, bindingResult);
-            populateError("password", modelAndView, bindingResult);
-            modelAndView.setViewName(SIGN_IN_PAGE.getPath());
-            return modelAndView;
-        }
+   // @ErrorView(value = "error", status = HttpStatus.FORBIDDEN)
+   @PostMapping
+   public ModelAndView login(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, ModelAndView modelAndView) throws AuthorizationException {
+       if (bindingResult.hasErrors()) {
+           populateError("email", modelAndView, bindingResult);
+           populateError("password", modelAndView, bindingResult);
+           modelAndView.setViewName(SIGN_IN_PAGE.getPath());
+           return modelAndView;
+       }
 
-        return userService.authenticate(user);
-    }
+       return userService.authenticate(user);
+   }
 
     @ModelAttribute("user")
     public User setUpUserForm() {

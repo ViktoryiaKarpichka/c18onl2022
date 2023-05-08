@@ -9,7 +9,9 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -30,7 +32,7 @@ public class User implements Serializable {
     private int balance;
 
     public User(String email, String password) {
-        this.name = email;
+        this.email = email;
         this.password = password;
     }
 }

@@ -1,8 +1,8 @@
 package com.tms.service.impl;
 
 import static com.tms.model.PagesPath.HOME_PAGE;
-import static com.tms.model.PagesPath.SIGN_IN_PAGE;
 
+import com.tms.exeptions.AuthorizationException;
 import com.tms.model.Category;
 import com.tms.model.User;
 import com.tms.repository.UserRepository;
@@ -23,21 +23,18 @@ public class UserServiceImpl implements UserService {
     private final CategoryService categoryService;
 
     @Override
-    public ModelAndView authenticate(User user) {
+    public ModelAndView authenticate(User user) throws AuthorizationException {
         ModelAndView modelAndView = new ModelAndView();
-        if (Optional.ofNullable(user).isPresent()
-                && Optional.ofNullable(user.getEmail()).isPresent()
-                && Optional.ofNullable(user.getPassword()).isPresent()) {
-            User loggedUser = userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());
-            if (Optional.ofNullable(loggedUser).isPresent()) {
-                ModelMap modelMap = new ModelMap();
-                List<Category> categoriesList = categoryService.getCategories();
-                modelMap.addAttribute("categories", categoriesList);
-                modelAndView.setViewName(HOME_PAGE.getPath());
-                modelAndView.addAllObjects(modelMap);
-            } else {
-                modelAndView.setViewName(SIGN_IN_PAGE.getPath());
-            }
+        User loggedUser = userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());
+        if (Optional.ofNullable(loggedUser).isPresent()) {
+            ModelMap modelMap = new ModelMap();
+            List<Category> categoriesList = categoryService.getCategories();
+            modelMap.addAttribute("categories", categoriesList);
+            modelAndView.setViewName(HOME_PAGE.getPath());
+            modelAndView.addAllObjects(modelMap);
+        } else {
+            throw new AuthorizationException("User is not authorized! Please, try again!");
+            // modelAndView.setViewName(SIGN_IN_PAGE.getPath());
         }
         return modelAndView;
     }

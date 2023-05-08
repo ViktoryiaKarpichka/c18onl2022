@@ -6,7 +6,8 @@ public enum PagesPath {
     CART_PAGE("cart"),
     SIGN_IN_PAGE("signin"),
     PRODUCT_PAGE("product"),
-    CATEGORY_PAGE("category");
+    CATEGORY_PAGE("category"),
+    ERROR_PAGE("error");
 
     private final String path;
 

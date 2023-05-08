@@ -34,9 +34,9 @@
                 <div class="card w-25 m-1" type="category">
                     <div class="card-body" style="text-align: center">
                             ${category.getName()}<br>
-                        <a href="${contextPath}/category/${category.getId()}">${category.getName()}</a>
-                        <img class="card-img" style="width:150px;height:120px"
-                             src="${contextPath}${category.getImageName()}" alt="Card image">
+                        <a href="${contextPath}/category/${category.getId()}">
+                            <img class="card-img" style="width:150px;height:120px"
+                                 src="../images/${category.getImageName()}" alt="Card image"></a>
                     </div>
                 </div>
             </c:forEach>

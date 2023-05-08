@@ -8,11 +8,10 @@
     <jsp:include page="header.jsp"></jsp:include>
 </head>
 <body>
-<p3>Welcome, <b class="font-italic">${username.getName()}</b>!</p3>
-<p class="text-center">Ваш пароль: <b class="font-italic">${username.getPassword()}</b></p>
-<button onclick="window.location.href = '<c:url value="/eshop?command=logout"/>';" class="buttonQuit">
-    <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> Выйти
-</button>
-
+<p3>Welcome, <b class="font-italic">${user.getEmail()}</b>!</p3>
+<p class="text-center">Ваш пароль: <b class="font-italic">${user.getPassword()}</b></p>
+<a href="${contextPath}/logout">
+    <button id="redirect" type="submit">Exit</button>
+</a>
 </body>
 </html>
